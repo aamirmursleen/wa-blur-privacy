@@ -1,0 +1,70 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Privacy policy — WA Blur and Privacy</title><style>body{max-width:840px;margin:48px auto;padding:0 24px;color:#182619;background:#fff;font:16px/1.65 system-ui}pre{font:inherit;white-space:pre-wrap;overflow-wrap:anywhere}</style><main><pre># Privacy Policy
+
+Draft prepared: 1 October 2026. Effective on public publication.
+Applies to: the Chrome extension "WA Blur and Privacy by WASecret.com" (Store Edition), version 3.46 and later.
+Contact: hello@wasecret.com
+
+This extension is an independent tool for WhatsApp Web. It is not made by, affiliated with, or endorsed by WhatsApp LLC or Meta.
+
+## What the extension does with your data
+
+When you first install the extension, an onboarding page shows this summary and asks you to agree before setup continues.
+
+The extension runs inside your own browser on `https://web.whatsapp.com`. To blur, lock, translate, remind and export, it reads the parts of WhatsApp Web that are already on your screen (message text, names, photos, timestamps). It does this only to provide those features to you.
+
+**We do not collect, sell, share or transmit your data to us or to any server we operate. We run no servers for this extension. There is no analytics, advertising or tracking of any kind.**
+
+## Stored on your device only
+
+Settings, your PIN (stored as a salted hash, never the PIN itself), private-chat list, quick replies, notes, reminders, smart-inbox tabs, read-receipt and presence switches, and (if you switch it on) copies of messages that were deleted after you received them, are kept in Chrome's extension storage on your computer. You can delete them at any time from the extension's settings, or by removing the extension.
+
+## Optional features that send data to a third party
+
+Third-party processing starts only when you enable the corresponding feature or request the action.
+
+1. **Better translation and voice-note transcription with your own OpenAI key.** If you save your own OpenAI API key in the extension, then only the text you ask to translate, or the voice note you ask to transcribe, is sent to OpenAI (`api.openai.com`) using your key, under your own OpenAI account and OpenAI's terms and privacy policy. Without a key nothing is sent. You can switch this off on the Translate page or remove the key at any time. The key is kept in Chrome's local extension storage and is never sent anywhere except to OpenAI.
+2. **"Open in Google Translate" button.** Only if you click it and confirm, the text you selected opens in a new `translate.google.com` tab, under Google's terms. Nothing is sent unless you do this.
+3. **Chrome's built-in translator and AI.** If your Chrome has them, on-device translation uses them. They run on your computer; Chrome itself may download language packs from Google.
+
+4. **Optional Chrome settings sync.** If enabled, a limited set of privacy, appearance and translation preferences can be stored in Chrome Sync under your Google account. Chat messages, contacts, PINs and API keys are not part of this settings record. Chrome handles transport and retention under its own terms.
+
+The extension also interacts with WhatsApp Web and WhatsApp services to load the account data and perform the actions you request. It does not send this data to the publisher. All libraries are bundled inside the extension; nothing is downloaded or executed from a remote server. Chrome's built-in translator may download its own language packs from Google under Chrome's terms.
+
+## Permissions and why they are needed
+
+| Permission | Why |
+|---|---|
+| `https://web.whatsapp.com/*` | The extension only works on WhatsApp Web. |
+| `https://api.openai.com/*` | Optional translation/transcription with your own key. |
+| `storage` | Save your settings and local data on your device. |
+| `alarms`, `notifications` | Reminders and their alerts. |
+| `scripting` | Load the privacy engine into the WhatsApp Web tab. |
+| `sidePanel` | Show the extension beside WhatsApp Web. |
+| `offscreen` | Save recovered media in the background without blocking the page. |
+| `downloads` | Save exports and recovered media to a folder you choose. |
+| `tabs` (optional) | Only if you grant it, to find your WhatsApp Web tab. |
+
+## Limited Use
+
+The use of information received from Chrome and from the pages you open adheres to the Chrome Web Store User Data Policy, including the Limited Use requirements. Data is used only to provide the single purpose described above. It is not sold, not used for personalised advertising, not used to decide credit or lending, and not read by people except with your explicit permission or where the law requires.
+
+## Messages the extension sends
+
+The extension never sends a WhatsApp message on its own. Reminders only notify you. Any message is sent only when you press a send button.
+
+## Retention and deletion
+
+Locally saved settings and feature records remain until you delete them in the extension, clear its storage, or uninstall it. Exported files remain in the folder you chose until you delete them. Data sent to OpenAI or Google is subject to those providers’ retention policies and your account settings. Disabling a feature does not remove files you previously exported.
+
+## Children
+
+The extension is not directed to children under 13.
+
+## Changes
+
+If this policy changes, the new version will be published here with a new effective date and the extension's store listing will be updated.
+
+## Contact
+
+hello@wasecret.com
+</pre></main></html>
