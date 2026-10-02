@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie_svg.min.js"></script>
+<meta name="ext-resource-dependency" content="assets/sloth-bot.json">
+<style>
+@keyframes cbDot{0%,80%,100%{transform:translateY(0);opacity:.35}40%{transform:translateY(-4px);opacity:1}}
+@keyframes cbIn{from{opacity:0;transform:translateY(16px) scale(.96);filter:blur(6px)}to{opacity:1;transform:none;filter:blur(0)}}
+@keyframes cbMsg{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes cbRing{0%{box-shadow:0 0 0 0 rgba(78,138,26,.55)}100%{box-shadow:0 0 0 16px rgba(78,138,26,0)}}
+@keyframes cbPoint{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
+@keyframes cbHi{0%,100%{transform:rotate(0)}20%{transform:rotate(-12deg)}40%{transform:rotate(10deg)}60%{transform:rotate(-6deg)}}
+</style>
+</helmet>
+
+<div style="position:fixed; right:clamp(12px,2vw,24px); bottom:clamp(12px,2vw,24px); z-index:150; display:flex; flex-direction:column; align-items:flex-end; gap:12px; font-family:Geist,system-ui,sans-serif; color:#1F2A17; pointer-events:none;">
+
+  <sc-if value="{{ open }}" hint-placeholder-val="{{ false }}">
+    <div role="dialog" aria-label="WA Blur assistant" style="pointer-events:auto; width:min(392px, calc(100vw - 24px)); height:min(640px, calc(100vh - 110px)); display:flex; flex-direction:column; border-radius:28px; overflow:hidden; background:#F6F9F1; box-shadow:0 1px 2px rgba(40,60,20,.06), 0 40px 90px -20px rgba(40,70,20,.45); border:1px solid #E6EDDC; animation:cbIn .35s cubic-bezier(.2,.7,.2,1) both;">
+
+      <div style="position:relative; overflow:hidden; padding:16px 16px 18px; background:linear-gradient(150deg,#5A9624 0%,#4E8A1A 38%,#3B6E12 70%,#2C5409 100%); color:#fff; display:flex; flex-direction:column; gap:14px; isolation:isolate;">
+        <div style="position:absolute; z-index:-1; width:260px; height:260px; right:-90px; top:-140px; border-radius:50%; background:radial-gradient(closest-side, rgba(205,229,174,.35), transparent);"></div>
+        <div style="display:flex; align-items:center; gap:12px;">
+          <span style="position:relative; flex:none;">
+            <span style="position:relative; display:block; width:44px; height:44px; border-radius:50%; overflow:hidden; background:#EEF5E4; box-shadow:0 0 0 2px rgba(255,255,255,.55), 0 6px 16px -6px rgba(0,0,0,.5);"><span data-sloth="1" style="position:absolute; width:244.2%; height:138.4%; left:-102.6%; top:-12.1%; display:block;"></span></span>
+            <span style="position:absolute; right:-2px; bottom:-2px; width:12px; height:12px; border-radius:50%; background:#CDE5AE; border:2px solid #3B6E12;"></span>
+          </span>
+          <span style="flex:1; min-width:0; display:flex; flex-direction:column; gap:2px;">
+            <span style="font-size:16px; font-weight:600; letter-spacing:-.01em;">WA Blur assistant</span>
+            <span style="font-size:12px; color:rgba(255,255,255,.82);">{{ statusLine }}</span>
+          </span>
+          <button onClick="{{ reset }}" aria-label="New conversation" title="New conversation" style="width:36px; height:36px; border-radius:12px; border:0; background:rgba(255,255,255,.14); color:#fff; font-size:15px; cursor:pointer; transition:background .2s;" style-hover="background:rgba(255,255,255,.26);">↺</button>
+          <button onClick="{{ close }}" aria-label="Close chat" style="width:36px; height:36px; border-radius:12px; border:0; background:rgba(255,255,255,.14); color:#fff; font-size:18px; cursor:pointer; transition:background .2s;" style-hover="background:rgba(255,255,255,.26);">×</button>
+        </div>
+        <div style="display:flex; gap:6px; flex-wrap:wrap;">
+          <span style="font:500 11px 'Geist Mono'; padding:5px 9px; border-radius:99px; background:rgba(255,255,255,.14);">Features</span>
+          <span style="font:500 11px 'Geist Mono'; padding:5px 9px; border-radius:99px; background:rgba(255,255,255,.14);">Pricing</span>
+          <span style="font:500 11px 'Geist Mono'; padding:5px 9px; border-radius:99px; background:rgba(255,255,255,.14);">Privacy</span>
+          <span style="font:500 11px 'Geist Mono'; padding:5px 9px; border-radius:99px; background:rgba(255,255,255,.14);">Setup</span>
+        </div>
+      </div>
+
+      <div ref="{{ listRef }}" data-cb-list="1" style="flex:1; min-height:0; overflow-y:auto; padding:16px 14px 8px; display:flex; flex-direction:column; gap:12px; scrollbar-width:thin;">
+        <sc-for list="{{ msgs }}" as="m" hint-placeholder-count="1">
+          <sc-if value="{{ m.bot }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex; gap:8px; align-items:flex-end; max-width:92%; animation:cbMsg .3s ease-out both;">
+              <img src="assets/bot-sloth-face.png" alt="" style="flex:none; width:28px; height:28px; border-radius:50%; border:1.5px solid #DCE6CF;">
+              <div style="display:flex; flex-direction:column; gap:8px; min-width:0;">
+                <div style="padding:11px 14px; border-radius:18px 18px 18px 6px; background:#fff; border:1px solid #E6EDDC; font-size:14px; line-height:1.55; color:#1F2A17; white-space:pre-wrap; overflow-wrap:anywhere; box-shadow:0 1px 2px rgba(40,60,20,.05);">{{ m.text }}</div>
+                <sc-if value="{{ m.hasLinks }}" hint-placeholder-val="{{ false }}">
+                  <div style="display:flex; flex-wrap:wrap; gap:6px;">
+                    <sc-for list="{{ m.links }}" as="l" hint-placeholder-count="1">
+                      <a href="{{ l.href }}" style="display:inline-flex; align-items:center; gap:6px; padding:7px 12px; border-radius:99px; background:#EEF5E4; border:1px solid #DCE6CF; color:#2C5409; font-size:12.5px; font-weight:500; text-decoration:none; transition:background .2s;" style-hover="background:#4E8A1A; color:#fff; border-color:#4E8A1A;">{{ l.label }} <span>↗</span></a>
+                    </sc-for>
+                  </div>
+                </sc-if>
+              </div>
+            </div>
+          </sc-if>
+          <sc-if value="{{ m.user }}" hint-placeholder-val="{{ false }}">
+            <div style="align-self:flex-end; max-width:82%; padding:11px 14px; border-radius:18px 18px 6px 18px; background:#4E8A1A; color:#fff; font-size:14px; line-height:1.5; white-space:pre-wrap; overflow-wrap:anywhere; box-shadow:0 6px 16px -10px rgba(78,138,26,.7); animation:cbMsg .25s ease-out both;">{{ m.text }}</div>
+          </sc-if>
+        </sc-for>
+
+        <sc-if value="{{ typing }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; gap:8px; align-items:flex-end; animation:cbMsg .25s ease-out both;">
+            <img src="assets/bot-sloth-face.png" alt="" style="flex:none; width:28px; height:28px; border-radius:50%; border:1.5px solid #DCE6CF;">
+            <div style="display:flex; gap:5px; padding:14px 16px; border-radius:18px 18px 18px 6px; background:#fff; border:1px solid #E6EDDC;">
+              <span style="width:7px; height:7px; border-radius:50%; background:#4E8A1A; animation:cbDot 1.1s 0s infinite;"></span>
+              <span style="width:7px; height:7px; border-radius:50%; background:#4E8A1A; animation:cbDot 1.1s .15s infinite;"></span>
+              <span style="width:7px; height:7px; border-radius:50%; background:#4E8A1A; animation:cbDot 1.1s .3s infinite;"></span>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ showSuggest }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex; flex-direction:column; gap:8px; padding:4px 0 4px 34px;">
+            <span style="font:500 11px 'Geist Mono'; letter-spacing:.06em; text-transform:uppercase; color:#6B7A5E;">{{ suggestLabel }}</span>
+            <div style="display:flex; flex-wrap:wrap; gap:6px;">
+              <sc-for list="{{ suggest }}" as="s" hint-placeholder-count="5">
+                <button onClick="{{ s.ask }}" style="padding:8px 12px; border-radius:99px; border:1.5px solid #E6EDDC; background:#fff; color:#3E4A34; font:500 12.5px Geist; cursor:pointer; text-align:left; transition:border-color .2s, background .2s, color .2s;" style-hover="border-color:#4E8A1A; background:#F4F9EE; color:#2C5409;">{{ s.q }}</button>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+
+      <form onSubmit="{{ submit }}" style="padding:10px 12px 12px; background:#fff; border-top:1px solid #EEF2E8; display:flex; flex-direction:column; gap:8px;">
+        <div style="display:flex; align-items:flex-end; gap:8px; padding:6px 6px 6px 14px; border-radius:22px; background:#F3F7EC; border:1.5px solid {{ inputBd }}; transition:border-color .2s;">
+          <textarea ref="{{ inputRef }}" data-cb-input="1" value="{{ draft }}" onChange="{{ onDraft }}" onKeyDown="{{ onKey }}" onFocus="{{ onFocus }}" onBlur="{{ onBlur }}" rows="1" maxLength="{{ 600 }}" placeholder="Ask anything about WA Blur…" aria-label="Your question" style="flex:1; min-width:0; resize:none; border:0; outline:0; background:transparent; font:400 14px/1.45 Geist; color:#1F2A17; padding:8px 0; max-height:110px;"></textarea>
+          <button type="submit" aria-label="Send" disabled="{{ cantSend }}" style="flex:none; width:40px; height:40px; border-radius:50%; border:0; background:{{ sendBg }}; color:#fff; font-size:17px; cursor:pointer; transition:background .2s, transform .15s;" style-active="transform:scale(.92);">↑</button>
+        </div>
+        <span style="font-size:11px; color:#8A9780; text-align:center;">Answers can be wrong. For account issues write to <a href="mailto:hello@wasecret.com" style="color:#3B6E12; text-decoration:underline;">hello@wasecret.com</a></span>
+      </form>
+    </div>
+  </sc-if>
+
+  <div style="pointer-events:auto; display:flex; align-items:center; gap:6px;">
+    <sc-if value="{{ closed }}" hint-placeholder-val="{{ true }}">
+      <button onClick="{{ toggle }}" aria-label="Open helpline chat" style="display:flex; align-items:center; gap:4px; padding:0; border:0; background:transparent; cursor:pointer; animation:cbIn .5s .4s cubic-bezier(.2,.7,.2,1) both;">
+        <span style="position:relative; display:flex; flex-direction:column; align-items:flex-start; gap:2px; padding:9px 14px 10px; border-radius:16px; background:#fff; border:1px solid #E6EDDC; box-shadow:0 14px 30px -14px rgba(40,70,20,.45); text-align:left;">
+          <span style="display:inline-flex; align-items:center; gap:6px; font:600 10px 'Geist Mono'; letter-spacing:.1em; text-transform:uppercase; color:#4E8A1A;"><span style="width:6px; height:6px; border-radius:50%; background:#4E8A1A; animation:cbRing 1.8s ease-out infinite;"></span>Helpline</span>
+          <span style="font:600 14px Geist; color:#1F2A17; white-space:nowrap;">I'm here for help!</span>
+        </span>
+        <span style="display:block; width:34px; height:24px; animation:cbPoint 1.4s ease-in-out infinite;">
+          <svg viewBox="0 0 34 24" width="34" height="24" fill="none" stroke="#4E8A1A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6 C 10 2, 20 4, 28 14"></path><path d="M20 15 L 29 15 L 28 6"></path></svg>
+        </span>
+      </button>
+    </sc-if>
+    <button onClick="{{ toggle }}" aria-label="{{ launcherLabel }}" style="position:relative; width:60px; height:60px; border-radius:50%; border:0; background:{{ launcherBg }}; color:#fff; cursor:pointer; display:grid; place-items:center; box-shadow:0 16px 34px -12px rgba(40,70,20,.7); animation:{{ launcherAnim }}; transition:transform .25s cubic-bezier(.3,.8,.3,1.3), background .25s;" style-hover="transform:scale(1.07);">
+      <sc-if value="{{ open }}" hint-placeholder-val="{{ false }}"><span style="font-size:26px; line-height:1;">×</span></sc-if>
+      <sc-if value="{{ closed }}" hint-placeholder-val="{{ true }}"><span style="position:relative; display:block; width:54px; height:54px; border-radius:50%; overflow:hidden; background:#EEF5E4; border:2px solid #fff;"><span data-sloth="1" style="position:absolute; width:244.2%; height:138.4%; left:-102.6%; top:-12.1%; display:block;"></span></span></sc-if>
+      <sc-if value="{{ unread }}" hint-placeholder-val="{{ false }}"><span style="position:absolute; top:-2px; right:-2px; min-width:20px; height:20px; padding:0 5px; border-radius:99px; background:#CDE5AE; color:#2C5409; border:2px solid #fff; font:700 11px Geist; display:grid; place-items:center;">1</span></sc-if>
+    </button>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:460,&quot;height&quot;:760},&quot;startOpen&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;useAI&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  KEY = 'wasecret-chat-v1';
+  listRef = React.createRef();
+  inputRef = React.createRef();
+  L = {
+    pricing: { label: 'See pricing', href: 'Pricing.dc.html' },
+    compare: { label: 'Compare plans', href: 'Pricing.dc.html#compare' },
+    install: { label: 'Add to Chrome', href: 'WA%20Blur%20Landing.dc.html#install' },
+    privacy: { label: 'Privacy Policy', href: 'Privacy%20Policy.dc.html' },
+    terms: { label: 'Terms of Service', href: 'Terms%20of%20Service.dc.html' },
+    dmca: { label: 'DMCA Policy', href: 'DMCA%20Policy.dc.html' },
+    contact: { label: 'Contact us', href: 'Contact.dc.html' },
+    features: { label: 'All features', href: 'WA%20Blur%20Landing.dc.html#features' },
+    how: { label: 'How it works', href: 'WA%20Blur%20Landing.dc.html#how' },
+    tools: { label: 'Explore the tools', href: 'WA%20Blur%20Landing.dc.html#tools' },
+    disclaimer: { label: 'Disclaimer', href: 'Disclaimer.dc.html' },
+  };
+  KB = [
+    { k: ['price', 'pricing', 'cost', 'how much', 'plan', 'plans', 'pro', 'premium', 'subscription', 'paid', 'kitne', 'qeemat', 'paise', 'month', 'yearly', 'annual'], l: ['pricing', 'compare'],
+      a: 'There are three plans:\n• Free — $0, forever. Blur areas, reveal, Alt+X, presets, PIN lock and auto-lock, quick chat & QR.\n• Pro — $5/month ($50/year). Adds unlimited private chats, deleted-message recovery, smart inbox tabs, unlimited quick replies and reminders, all export formats, OpenAI translation, notes, encryption and all themes.\n• Premium — $9/month ($90/year). Adds audio & video call recording, the live voice changer, voice-note transcription, Kanban CRM, appointments, group mentions and priority support.\nYearly billing gives you 2 months free.' },
+    { k: ['free', 'muft', 'free plan', 'without paying'], l: ['install', 'pricing'],
+      a: 'Yes — the Free plan is $0 forever and needs no account or card. It includes all 6 blur areas, reveal on hover, Alt+X instant hide, the 4 presets, PIN lock with auto-lock, and quick chat with wa.me links and QR codes.' },
+    { k: ['what is', 'what does', 'kya hai', 'about', 'extension do', 'purpose'], l: ['features', 'install'],
+      a: 'WA Blur and Privacy is a Chrome extension for WhatsApp Web. It blurs messages, names, photos and previews when someone is near your screen, locks WhatsApp Web with a PIN, and adds tools like reminders, quick replies, a smart inbox, translation and chat export. Everything runs on your own computer.' },
+    { k: ['install', 'download', 'add to chrome', 'setup', 'set up', 'get started', 'kaise', 'start'], l: ['install', 'how'],
+      a: 'Install it from the Chrome Web Store, then open web.whatsapp.com. A short onboarding opens: it explains what the extension reads and stores, asks for your agreement, lets you pick what to hide, and (optionally) create a PIN. It takes under a minute.' },
+    { k: ['blur', 'hide', 'chupa', 'areas', 'strength'], l: ['features', 'tools'],
+      a: 'You can blur 6 areas separately, each with its own strength: messages, chat previews, contact names, profile photos, photos & videos, and the typing field. Content comes back on hover, one message at a time, or instantly — your choice. Presets: Everyday, Screen share, Office and Family.' },
+    { k: ['shortcut', 'keyboard', 'alt', 'hotkey', 'alt x', 'alt+x'], l: ['how'],
+      a: 'Keyboard shortcuts:\n• Alt + X — hide the whole screen instantly\n• Ctrl/⌘ + Shift + L — lock WhatsApp with your PIN\n• Alt + S — open the side panel\n• Alt + A — screenshot studio' },
+    { k: ['pin', 'lock', 'password', 'auto-lock', 'autolock', 'lock screen'], l: ['features'],
+      a: 'You can lock WhatsApp Web behind a 6–12 digit PIN, by hand (Ctrl/⌘ + Shift + L) or automatically after 1, 5, 15 or 30 idle minutes. Your PIN is stored only as a salted hash on your computer — never the PIN itself.' },
+    { k: ['forgot', 'reset pin', 'lost pin', 'bhool'], l: ['contact'],
+      a: 'For security, your PIN is stored only as a salted hash on your computer, so nobody — including us — can read it back. Please write to hello@wasecret.com and we\u2019ll help you with the steps for your version.' },
+    { k: ['data', 'privacy', 'safe', 'secure', 'collect', 'server', 'track', 'analytics', 'sell', 'mehfooz'], l: ['privacy'],
+      a: 'Your chat history stays on your computer. We run no servers for this extension, and there is no analytics, advertising or tracking. Data only leaves your device if you choose an optional feature: OpenAI translation with your own key, Google Translate when you click it, or Chrome settings sync.' },
+    { k: ['private chat', 'hidden chat', 'secret chat', 'hide chat'], l: ['pricing'],
+      a: 'Private chats disappear from your chat list until you unlock with your PIN. Free includes 1 private chat; Pro and Premium include unlimited private chats.' },
+    { k: ['deleted', 'recover', 'delete for everyone', 'undelete', 'edited'], l: ['pricing'],
+      a: 'With Pro or Premium, you can switch on deleted-message recovery: copies of messages deleted after you received them are kept on your computer. Edited-message history is included too.' },
+    { k: ['record', 'recording', 'call', 'video call', 'audio call', 'voice changer', 'voice'], l: ['pricing', 'disclaimer'],
+      a: 'Audio & video call recording and the live real human voice changer are part of Premium ($9/month or $90/year). Recording laws differ by country — some require everyone\u2019s consent — so please use these features lawfully.' },
+    { k: ['translate', 'translation', 'language', 'urdu', 'english', 'tarjuma'], l: ['tools'],
+      a: 'You can translate messages into 100 languages. On-device translation uses Chrome\u2019s built-in translator, so your text stays on your computer. Pro and Premium can also use your own OpenAI key for better quality — only the text you translate is sent, and only if you add a key.' },
+    { k: ['export', 'backup', 'csv', 'excel', 'json', 'html', 'txt', 'save chat'], l: ['pricing'],
+      a: 'You can export chats and contacts. Free exports TXT; Pro and Premium export TXT, HTML, CSV, JSON and Excel to a folder you choose.' },
+    { k: ['reminder', 'remind', 'task', 'follow up', 'follow-up'], l: ['tools'],
+      a: 'Reminders and tasks have a date and time, repeat options, and "keep reminding me until I press OK". Reminders only notify you — the extension never sends a message by itself.' },
+    { k: ['quick repl', 'template', 'canned'], l: ['tools'],
+      a: 'Quick replies let you save the replies you send most and insert them with one click. You still press Send yourself.' },
+    { k: ['inbox', 'unread', 'awaiting'], l: ['tools'],
+      a: 'The smart inbox sorts your chats into All, Unread, Awaiting reply, Follow up and Pinned. Pro and Premium can add custom tabs.' },
+    { k: ['openai', 'api key', 'key'], l: ['privacy'],
+      a: 'An OpenAI key is optional. It\u2019s only used for better translation and voice-note transcription, under your own OpenAI account. It\u2019s kept in Chrome\u2019s local storage and sent only to OpenAI.' },
+    { k: ['official', 'whatsapp made', 'meta', 'affiliated', 'ban', 'banned', 'safe for account'], l: ['disclaimer', 'terms'],
+      a: 'This is an independent tool — it is not made by or affiliated with WhatsApp LLC or Meta. It never sends messages on its own and doesn\u2019t automate bulk messaging. You remain bound by WhatsApp\u2019s own terms while using it.' },
+    { k: ['phone', 'mobile', 'android', 'iphone', 'ios', 'app', 'edge', 'firefox', 'safari', 'brave', 'browser'], l: ['install'],
+      a: 'It works on WhatsApp Web (web.whatsapp.com) in desktop Chrome with a linked WhatsApp account. It doesn\u2019t run inside the WhatsApp phone app.' },
+    { k: ['send message', 'auto send', 'spam', 'bulk'], l: ['terms'],
+      a: 'No — the extension never sends a WhatsApp message on its own. Every message is sent only when you press Send.' },
+    { k: ['cancel', 'refund', 'billing', 'invoice', 'upgrade', 'downgrade'], l: ['contact', 'pricing'],
+      a: 'You can move between Pro and Premium later. For billing, refunds or invoices, please write to hello@wasecret.com and a person will reply.' },
+    { k: ['contact', 'support', 'help', 'email', 'human', 'person', 'rabta'], l: ['contact'],
+      a: 'You can reach a person at hello@wasecret.com, or use the contact form. For bugs, attach the privacy-safe diagnostics file from Help & diagnostics in the extension.' },
+    { k: ['dmca', 'copyright'], l: ['dmca'],
+      a: 'Send copyright notices to hello@wasecret.com with the subject "DMCA Notice" and include all six items listed in our DMCA Policy.' },
+    { k: ['theme', 'dark mode', 'wallpaper', 'color', 'style'], l: ['pricing'],
+      a: 'Free includes light and dark. Pro and Premium unlock all 6 themes (Light, Dark, Midnight, Glass, AMOLED, Aurora), 9 accent colours, backgrounds and your own wallpaper.' },
+  ];
+  SUGGEST = ['What does it do?', 'Is it free?', 'How much is Pro?', 'Is my data safe?', 'Keyboard shortcuts', 'Can it record calls?'];
+  SYSTEM = () => `You are the friendly assistant on the website of "WA Blur and Privacy by WASecret.com", a Chrome extension for WhatsApp Web. Answer ONLY from the facts below. Be concise (2–5 short sentences or a short bullet list), warm and plain-spoken. Reply in the user's language (English, Urdu or Roman Urdu). Never invent features, prices, dates, policies or numbers. If something isn't covered, say you're not sure and suggest emailing hello@wasecret.com. No markdown headings, no bold; plain text and "•" bullets only.\n\nFACTS:\n` + this.KB.map(x => '- ' + x.a.replace(/\n/g, ' ')).join('\n') + `\n- The website has pages: Features, Pricing, About, Contact, Privacy Policy, Terms of Service, Cookie Policy, Disclaimer, DMCA Policy.\n- Version 3.46.16.`;
+
+  state = { open: false, msgs: [], draft: '', typing: false, focus: false, nudge: false, unread: false };
+  componentDidMount() {
+    try { const s = JSON.parse(localStorage.getItem(this.KEY) || 'null'); if (s && Array.isArray(s.msgs)) this.setState({ msgs: s.msgs.slice(-40) }); } catch (e) {}
+    if (this.props.startOpen) this.openChat();
+    this.nt = setTimeout(() => { if (!this.state.open && !this.state.msgs.length) this.setState({ nudge: true, unread: true }); }, 6000);
+    this.onEsc = (e) => { if (e.key === 'Escape' && this.state.open) this.setState({ open: false }); };
+    window.addEventListener('keydown', this.onEsc);
+    this.mountSloths();
+  }
+  mountSloths() {
+    const init = () => {
+      if (!window.lottie) return;
+      const els = [...document.querySelectorAll('[data-sloth]')].filter(el => !el.__lot);
+      if (!els.length) return;
+      if (!this.slothData) { if (!this.slothP) this.slothP = fetch('assets/sloth-bot.json').then(r => r.json()).then(d => { this.slothData = d; init(); }).catch(() => {}); return; }
+      els.forEach(el => { el.__lot = window.lottie.loadAnimation({ container: el, renderer: 'svg', loop: true, autoplay: true,
+        animationData: JSON.parse(JSON.stringify(this.slothData)), rendererSettings: { preserveAspectRatio: 'xMidYMid meet' } }); });
+    };
+    this.slothTimer = setInterval(init, 250); init();
+  }
+  componentWillUnmount() { clearInterval(this.slothTimer); clearTimeout(this.nt); window.removeEventListener('keydown', this.onEsc); }
+  save(msgs) { try { localStorage.setItem(this.KEY, JSON.stringify({ msgs: msgs.slice(-40) })); } catch (e) {} }
+  findInput() { return this.inputRef.current || document.querySelector('[data-cb-input]'); }
+  autosize() { requestAnimationFrame(() => { const ta = this.findInput(); if (ta) { ta.style.height = 'auto'; ta.style.height = Math.min(110, ta.scrollHeight) + 'px'; } }); }
+  openChat() { this.setState({ open: true, nudge: false, unread: false });
+    this.toBottom(false); setTimeout(() => { const ta = this.findInput(); ta && ta.focus(); }, 80); }
+  findList() { return this.listRef.current || document.querySelector('[data-cb-list]'); }
+  toBottom(smooth) {
+    let n = 0;
+    const go = () => { const el = this.findList();
+      if (el) { const target = el.scrollHeight - el.clientHeight; if (smooth && n === 0) el.scrollTo({ top: target, behavior: 'smooth' }); else el.scrollTop = target; }
+      if (++n < 4) requestAnimationFrame(go); };
+    requestAnimationFrame(go);
+    setTimeout(() => { const el = this.findList(); if (el) el.scrollTop = el.scrollHeight; }, 380);
+  }
+  match(q) {
+    const t = ' ' + q.toLowerCase().replace(/[^\p{L}\p{N}+ ]+/gu, ' ') + ' ';
+    let best = null, score = 0;
+    for (const e of this.KB) { let s = 0; for (const k of e.k) if (t.includes(k.includes(' ') ? k : ' ' + k)) s += k.length > 4 ? 2 : 1; if (s > score) { score = s; best = e; } }
+    return score ? best : null;
+  }
+  async ask(text) {
+    const q = (text || '').trim(); if (!q || this.state.typing) return;
+    const hist = [...this.state.msgs, { role: 'user', text: q }];
+    this.setState({ msgs: hist, draft: '', typing: true, nudge: false, unread: false }); this.save(hist); this.toBottom(true); this.autosize();
+    const hit = this.match(q), links = hit ? hit.l : [];
+    let answer = null;
+    const useAI = this.props.useAI !== false && window.claude && window.claude.complete;
+    if (useAI) {
+      try {
+        const messages = hist.slice(-10).map(m => ({ role: m.role === 'user' ? 'user' : 'assistant', content: m.text }));
+        while (messages.length && messages[0].role !== 'user') messages.shift();
+        answer = await window.claude.complete({ system: this.SYSTEM(), messages, max_tokens: 500 });
+        answer = (answer || '').replace(/\*\*/g, '').replace(/^#+\s*/gm, '').trim();
+      } catch (e) { answer = null; }
+    } else { await new Promise(r => setTimeout(r, 550 + Math.random() * 400)); }
+    if (!answer) answer = hit ? hit.a : "I'm not sure about that one. A person can help at hello@wasecret.com — or try asking about features, pricing, privacy, shortcuts or setup.";
+    const ll = links.length ? links : (answer.includes('hello@wasecret.com') ? ['contact'] : []);
+    const next = [...this.state.msgs, { role: 'bot', text: answer, links: ll }];
+    this.setState({ typing: false, msgs: next }); this.save(next); this.toBottom(true);
+  }
+  renderVals() {
+    const s = this.state;
+    const welcome = { role: 'bot', text: "Hi! I'm the WA Blur assistant. Ask me anything about blurring and locking WhatsApp Web, pricing, privacy or setup.", links: [] };
+    const all = [welcome, ...s.msgs];
+    const msgs = all.map(m => { const links = (m.links || []).map(k => this.L[k]).filter(Boolean);
+      return { bot: m.role !== 'user', user: m.role === 'user', text: m.text, links, hasLinks: links.length > 0 }; });
+    const asked = new Set(s.msgs.filter(m => m.role === 'user').map(m => m.text));
+    const pool = this.SUGGEST.filter(q => !asked.has(q));
+    const showSuggest = !s.typing && pool.length > 0 && s.msgs.length < 8;
+    const canSend = s.draft.trim().length > 0 && !s.typing;
+    return {
+      open: s.open, closed: !s.open, msgs, typing: s.typing, listRef: this.listRef, inputRef: this.inputRef,
+      statusLine: s.typing ? 'Typing…' : 'Online · usually answers instantly',
+      showSuggest, suggestLabel: s.msgs.length ? 'You can also ask' : 'Popular questions',
+      suggest: pool.slice(0, s.msgs.length ? 3 : 6).map(q => ({ q, ask: () => this.ask(q) })),
+      draft: s.draft, onDraft: e => { this.setState({ draft: e.target.value }); this.autosize(); },
+      onKey: e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); this.ask(s.draft); } },
+      onFocus: () => this.setState({ focus: true }), onBlur: () => this.setState({ focus: false }),
+      inputBd: s.focus ? '#4E8A1A' : '#E6EDDC',
+      submit: e => { e.preventDefault(); this.ask(s.draft); },
+      cantSend: !canSend, sendBg: canSend ? '#4E8A1A' : '#B9D39A',
+      toggle: () => { if (this.state.open) this.setState({ open: false }); else this.openChat(); },
+      close: () => this.setState({ open: false }),
+      reset: () => { this.setState({ msgs: [], draft: '' }); this.save([]); this.toBottom(false); },
+      showNudge: s.nudge && !s.open, unread: s.unread && !s.open,
+      launcherBg: s.open ? '#1F2A17' : '#4E8A1A', launcherLabel: s.open ? 'Close chat' : 'Open chat',
+      launcherAnim: s.open ? 'none' : 'cbRing 2.2s ease-out infinite',
+    };
+  }
+}
+</script>
+</body>
+</html>

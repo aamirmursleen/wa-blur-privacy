@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<title>Contact us — WA Blur and Privacy by WASecret.com</title>
+<meta name="description" content="Contact WASecret.com about WA Blur and Privacy: questions, bug reports, privacy requests and copyright notices.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&amp;family=Geist:wght@300..700&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#EDF3E4;color:#1F2A17;font-family:Geist,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#3B6E12;text-decoration:none}
+a:hover{color:#1F2A17}
+::selection{background:#CDE5AE;color:#1F2A17}
+input,textarea,button{font-family:inherit}
+@keyframes unblur{from{opacity:0;filter:blur(14px);transform:translateY(18px)}to{opacity:1;filter:blur(0);transform:none}}
+@keyframes glow{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:.9;transform:scale(1.08)}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(205,229,174,.75)}100%{box-shadow:0 0 0 10px rgba(205,229,174,0)}}
+@keyframes rise{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+@keyframes pop{0%{transform:scale(.6);opacity:0}60%{transform:scale(1.08);opacity:1}100%{transform:scale(1)}}
+</style>
+</helmet>
+
+<div style="min-height:100vh; padding:16px clamp(12px,2vw,24px) 24px; display:flex; flex-direction:column; align-items:center; gap:20px; overflow-x:clip;">
+  <nav style="position:sticky; top:12px; z-index:50; width:100%; max-width:1320px; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:10px 10px 10px 16px; background:rgba(255,255,255,.82); backdrop-filter:blur(16px) saturate(1.4); -webkit-backdrop-filter:blur(16px) saturate(1.4); border:1px solid rgba(31,42,23,.06); border-radius:999px; box-shadow:0 8px 30px -12px rgba(31,42,23,.18); animation:unblur .8s cubic-bezier(.2,.7,.2,1) both;">
+    <a href="WA%20Blur%20Landing.dc.html" style="display:flex; align-items:center; gap:10px; color:#1F2A17; flex:none; white-space:nowrap;"><img src="assets/logo.png" alt="WASecret.com" style="height:34px; width:auto; display:block;"></a>
+    <div style="display:flex; gap:4px; padding:4px; background:#F3F7EC; border-radius:999px; min-width:0; overflow-x:auto; scrollbar-width:none; white-space:nowrap;">
+      <a href="WA%20Blur%20Landing.dc.html#features" style="padding:8px 14px; border-radius:999px; font-size:14px; font-weight:500; color:#3E4A34;" style-hover="color:#1F2A17; background:#fff;">Features</a>
+      <a href="Pricing.dc.html" style="padding:8px 14px; border-radius:999px; font-size:14px; font-weight:500; color:#3E4A34;" style-hover="color:#1F2A17; background:#fff;">Pricing</a>
+      <a href="About.dc.html" style="padding:8px 14px; border-radius:999px; font-size:14px; font-weight:500; color:#3E4A34;" style-hover="color:#1F2A17; background:#fff;">About</a>
+      <a href="Privacy%20Policy.dc.html" style="padding:8px 14px; border-radius:999px; font-size:14px; font-weight:500; color:#3E4A34;" style-hover="color:#1F2A17; background:#fff;">Privacy</a>
+      <a href="Contact.dc.html" style="padding:8px 14px; border-radius:999px; font-size:14px; font-weight:500; color:#1F2A17; background:#fff; box-shadow:0 1px 2px rgba(0,0,0,.06);">Contact</a>
+    </div>
+    <a href="WA%20Blur%20Landing.dc.html#install" style="flex:none; white-space:nowrap; padding:11px 18px; background:#1F2A17; color:#fff; border-radius:999px; font-size:14px; font-weight:600;" style-hover="color:#CDE5AE;">Add to Chrome</a>
+  </nav>
+
+  <header data-screen-label="Contact header" style="position:relative; width:100%; max-width:1320px; border-radius:36px; overflow:hidden; background:linear-gradient(150deg,#5A9624 0%,#4E8A1A 38%,#3B6E12 70%,#2C5409 100%); color:#fff; padding:clamp(28px,5vw,64px); display:flex; flex-wrap:wrap; gap:40px; align-items:flex-end; justify-content:space-between; isolation:isolate;">
+    <div style="position:absolute; z-index:-1; width:800px; height:800px; right:-240px; top:-420px; border-radius:50%; background:radial-gradient(closest-side, rgba(205,229,174,.28), transparent); animation:glow 9s ease-in-out infinite;"></div>
+    <div style="position:absolute; z-index:-1; inset:0; background-image:linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px); background-size:56px 56px; -webkit-mask-image:radial-gradient(ellipse at 85% 10%, #000 10%, transparent 60%); mask-image:radial-gradient(ellipse at 85% 10%, #000 10%, transparent 60%);"></div>
+    <div style="flex:1 1 460px; display:flex; flex-direction:column; gap:24px;">
+      <div style="display:flex; align-items:center; gap:8px; font:500 12px 'Geist Mono'; color:rgba(255,255,255,.7); animation:unblur .8s .05s both;"><a href="WA%20Blur%20Landing.dc.html" style="color:rgba(255,255,255,.85);" style-hover="color:#CDE5AE;">Home</a><span>/</span><span>Company</span><span>/</span><span style="color:#CDE5AE;">Contact us</span></div>
+      <h1 style="margin:0; font-family:Archivo; font-weight:850; font-stretch:115%; font-size:clamp(44px,7.4vw,108px); line-height:.9; letter-spacing:-.035em; text-transform:uppercase; display:flex; flex-direction:column;"><span style="animation:unblur 1s .12s cubic-bezier(.2,.7,.2,1) both;">Talk to</span><span style="color:#CDE5AE; animation:unblur 1s .28s cubic-bezier(.2,.7,.2,1) both;">a person.</span></h1>
+      <p style="margin:0; max-width:520px; font-size:17px; line-height:1.55; color:rgba(255,255,255,.86); text-wrap:pretty; animation:unblur 1s .42s both;">Questions, bug reports, privacy requests or copyright notices. Write to us and a person will reply.</p>
+    </div>
+    <div style="flex:0 1 400px; display:flex; flex-direction:column; gap:10px; animation:unblur 1s .5s both;">
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; padding:16px 16px 16px 20px; border-radius:22px; background:#CDE5AE; color:#1F2A17;">
+        <span style="display:flex; flex-direction:column; gap:3px; min-width:0;"><span style="font:500 11px 'Geist Mono'; letter-spacing:.08em; text-transform:uppercase;">Email</span><a href="mailto:hello@wasecret.com" style="font-family:Archivo; font-stretch:106%; font-weight:750; font-size:22px; letter-spacing:-.01em; color:#1F2A17;">hello@wasecret.com</a></span>
+        <button onClick="{{ copyEmail }}" style="flex:none; height:40px; padding:0 14px; border-radius:99px; border:0; background:#1F2A17; color:#CDE5AE; font:600 13px Geist; cursor:pointer;">{{ copyLabel }}</button>
+      </div>
+      <a href="Privacy%20Policy.dc.html" style="display:flex; align-items:center; justify-content:space-between; gap:12px; padding:16px 20px; border-radius:22px; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.16); color:#fff; transition:background .2s;" style-hover="color:#fff; background:rgba(255,255,255,.14);"><span style="display:flex; flex-direction:column; gap:3px;"><span style="font-size:15px; font-weight:600;">Privacy requests</span><span style="font-size:13px; color:rgba(255,255,255,.72);">Read how your data is handled</span></span><span style="font-size:18px;">↗</span></a>
+      <a href="DMCA%20Policy.dc.html" style="display:flex; align-items:center; justify-content:space-between; gap:12px; padding:16px 20px; border-radius:22px; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.16); color:#fff; transition:background .2s;" style-hover="color:#fff; background:rgba(255,255,255,.14);"><span style="display:flex; flex-direction:column; gap:3px;"><span style="font-size:15px; font-weight:600;">Copyright notices</span><span style="font-size:13px; color:rgba(255,255,255,.72);">What to include in a DMCA notice</span></span><span style="font-size:18px;">↗</span></a>
+    </div>
+  </header>
+
+  <div style="width:100%; max-width:1320px; display:flex; flex-wrap:wrap; gap:20px; align-items:flex-start;">
+    <form onSubmit="{{ submit }}" noValidate="{{ true }}" style="flex:2 1 560px; min-width:0; background:#fff; border-radius:32px; padding:clamp(24px,4vw,52px); display:flex; flex-direction:column; gap:26px; animation:rise .9s .15s cubic-bezier(.2,.7,.2,1) both;">
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <h2 style="margin:0; font-family:Archivo; font-stretch:106%; font-weight:800; font-size:clamp(26px,2.6vw,36px); letter-spacing:-.025em; line-height:1.05;">Send us a message</h2>
+        <p style="margin:0; font-size:14px; line-height:1.5; color:#6B7A5E;">Your email app opens with the message filled in, ready to send.</p>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <span style="font:500 11px 'Geist Mono'; letter-spacing:.08em; text-transform:uppercase; color:#6B7A5E;">What is it about?</span>
+        <div style="display:flex; flex-wrap:wrap; gap:8px;">
+          <sc-for list="{{ topics }}" as="t" hint-placeholder-count="6">
+            <button type="button" onClick="{{ t.pick }}" style="padding:10px 16px; border-radius:99px; border:1.5px solid {{ t.bd }}; background:{{ t.bg }}; color:{{ t.fg }}; font-size:14px; font-weight:500; cursor:pointer; transition:background .2s, color .2s, border-color .2s, transform .15s;" style-active="transform:scale(.96);">{{ t.label }}</button>
+          </sc-for>
+        </div>
+        <sc-if value="{{ hint }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:12px 16px; border-radius:14px; background:#F4F9EE; border:1px solid #DCEBC8; font-size:13px; line-height:1.5; color:#2C5409; animation:unblur .35s ease-out both;">{{ hint }}</div>
+        </sc-if>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr)); gap:16px;">
+        <label style="display:flex; flex-direction:column; gap:8px;">
+          <span style="font-size:14px; font-weight:500;">Your name</span>
+          <input value="{{ name }}" onChange="{{ onName }}" placeholder="Ayesha Khan" autocomplete="name" style="height:52px; padding:0 16px; border-radius:14px; border:1.5px solid #DCE6CF; background:#F6F9F1; font-size:15px; color:#1F2A17; outline:none; transition:border-color .2s, box-shadow .2s;" style-focus="border-color:#4E8A1A; box-shadow:0 0 0 4px rgba(78,138,26,.14); background:#fff;">
+        </label>
+        <label style="display:flex; flex-direction:column; gap:8px;">
+          <span style="font-size:14px; font-weight:500;">Email address</span>
+          <input type="email" value="{{ email }}" onChange="{{ onEmail }}" placeholder="you@example.com" autocomplete="email" style="height:52px; padding:0 16px; border-radius:14px; border:1.5px solid {{ emailBd }}; background:#F6F9F1; font-size:15px; color:#1F2A17; outline:none; transition:border-color .2s, box-shadow .2s;" style-focus="border-color:#4E8A1A; box-shadow:0 0 0 4px rgba(78,138,26,.14); background:#fff;">
+          <sc-if value="{{ emailErr }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px; color:#B3261E;">Enter a valid email address so we can reply.</span></sc-if>
+        </label>
+      </div>
+
+      <label style="display:flex; flex-direction:column; gap:8px;">
+        <span style="display:flex; justify-content:space-between; gap:12px;"><span style="font-size:14px; font-weight:500;">Message</span><span style="font:500 12px 'Geist Mono'; color:#8A9780;">{{ count }}</span></span>
+        <textarea value="{{ msg }}" onChange="{{ onMsg }}" rows="6" maxLength="{{ 2000 }}" placeholder="Tell us what happened, what you expected, and your extension version." style="padding:14px 16px; border-radius:14px; border:1.5px solid {{ msgBd }}; background:#F6F9F1; font-size:15px; line-height:1.55; color:#1F2A17; outline:none; resize:vertical; min-height:150px; transition:border-color .2s, box-shadow .2s;" style-focus="border-color:#4E8A1A; box-shadow:0 0 0 4px rgba(78,138,26,.14); background:#fff;"></textarea>
+        <sc-if value="{{ msgErr }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px; color:#B3261E;">Please write a short message.</span></sc-if>
+      </label>
+
+      <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px; padding-top:6px;">
+        <span style="font-size:13px; line-height:1.5; color:#6B7A5E; max-width:360px;">Never send your PIN, passphrase or OpenAI API key. We will never ask for them.</span>
+        <button type="submit" style="display:inline-flex; align-items:center; gap:12px; padding:7px 7px 7px 22px; border-radius:999px; border:0; background:#1F2A17; color:#fff; font-size:15px; font-weight:600; cursor:pointer; transition:transform .25s, box-shadow .25s;" style-hover="transform:translateY(-2px); box-shadow:0 16px 30px -14px rgba(31,42,23,.6);">Open in email app<span style="width:40px; height:40px; border-radius:50%; background:#CDE5AE; color:#1F2A17; display:grid; place-items:center; font-size:17px;">↗</span></button>
+      </div>
+
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex; align-items:center; gap:14px; padding:16px 18px; border-radius:18px; background:#1F2A17; color:#fff; animation:unblur .4s ease-out both;">
+          <span style="flex:none; width:36px; height:36px; border-radius:50%; background:#CDE5AE; color:#1F2A17; display:grid; place-items:center; font-weight:700; animation:pop .5s ease-out both;">✓</span>
+          <span style="font-size:14px; line-height:1.5;">Your email app should open now. If it doesn't, write to <a href="mailto:hello@wasecret.com" style="color:#CDE5AE; text-decoration:underline;">hello@wasecret.com</a>.</span>
+        </div>
+      </sc-if>
+    </form>
+
+    <aside style="flex:1 1 320px; min-width:0; display:flex; flex-direction:column; gap:20px; animation:rise .9s .3s cubic-bezier(.2,.7,.2,1) both;">
+      <div style="background:#fff; border-radius:28px; padding:26px; display:flex; flex-direction:column; gap:16px;">
+        <span style="font:500 11px 'Geist Mono'; letter-spacing:.08em; text-transform:uppercase; color:#6B7A5E;">Before you write</span>
+        <div style="display:flex; gap:12px;"><span style="flex:none; width:26px; height:26px; border-radius:8px; background:#EEF5E4; color:#3B6E12; display:grid; place-items:center; font:600 12px 'Geist Mono';">1</span><span style="font-size:14px; line-height:1.55; color:#3E4A34;">For bugs, attach the privacy-safe diagnostics file from Help &amp; diagnostics in the extension.</span></div>
+        <div style="display:flex; gap:12px;"><span style="flex:none; width:26px; height:26px; border-radius:8px; background:#EEF5E4; color:#3B6E12; display:grid; place-items:center; font:600 12px 'Geist Mono';">2</span><span style="font-size:14px; line-height:1.55; color:#3E4A34;">We can't see your chats. They stay on your computer, so describe the problem or attach a screenshot with private details blurred.</span></div>
+        <div style="display:flex; gap:12px;"><span style="flex:none; width:26px; height:26px; border-radius:8px; background:#EEF5E4; color:#3B6E12; display:grid; place-items:center; font:600 12px 'Geist Mono';">3</span><span style="font-size:14px; line-height:1.55; color:#3E4A34;">Include your extension version. The current version is v3.46.16.</span></div>
+      </div>
+      <div style="position:relative; overflow:hidden; background:#1F2A17; color:#fff; border-radius:28px; padding:26px; display:flex; flex-direction:column; gap:12px;">
+        <div style="position:absolute; width:300px; height:300px; right:-120px; top:-150px; border-radius:50%; background:radial-gradient(closest-side, rgba(78,138,26,.7), transparent);"></div>
+        <span style="position:relative; font:500 11px 'Geist Mono'; letter-spacing:.08em; text-transform:uppercase; color:#CDE5AE;">Chrome Web Store reviewers</span>
+        <p style="position:relative; margin:0; font-size:14px; line-height:1.55; color:#AAB79C;">The extension works only on web.whatsapp.com with a linked account. The popup and options page show every setting without one. No login to any other service is needed.</p>
+      </div>
+      <div style="background:#CDE5AE; border-radius:28px; padding:26px; display:flex; flex-direction:column; gap:14px;">
+        <span style="font-size:16px; font-weight:600;">Looking for a quick answer?</span>
+        <div style="display:flex; flex-wrap:wrap; gap:8px;">
+          <a href="WA%20Blur%20Landing.dc.html#faq" style="padding:8px 14px; border-radius:99px; background:#1F2A17; color:#fff; font-size:13px; font-weight:500;" style-hover="color:#CDE5AE;">FAQ</a>
+          <a href="Privacy%20Policy.dc.html" style="padding:8px 14px; border-radius:99px; background:#fff; color:#1F2A17; font-size:13px; font-weight:500;" style-hover="color:#3B6E12;">Privacy Policy</a>
+          <a href="Terms%20of%20Service.dc.html" style="padding:8px 14px; border-radius:99px; background:#fff; color:#1F2A17; font-size:13px; font-weight:500;" style-hover="color:#3B6E12;">Terms</a>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <dc-import name="SiteFooter" current="contact" hint-size="100%,820px" style="width:100%; max-width:1320px; margin-top:40px;"></dc-import>
+  <dc-import name="ChatBot" hint-size="0px,0px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { topic: 'General question', name: '', email: '', msg: '', tried: false, sent: false, copied: false };
+  TOPICS = {
+    'General question': '',
+    'Bug report': 'Tell us what you did, what happened and what you expected. Attach the diagnostics file from Help & diagnostics.',
+    'Feature request': 'Describe what you want to do and why. Short examples help.',
+    'Privacy request': 'Tell us what you want to know or delete. Most data is on your own computer, and you can remove it from the extension settings.',
+    'Copyright / DMCA': 'Include all six items listed in the DMCA Policy, including your signature and the URL of the material.',
+    'Store review': 'For Chrome Web Store reviewers: the popup and options page show every setting without a WhatsApp account.',
+  };
+  renderVals() {
+    const s = this.state;
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s.email.trim());
+    const msgOk = s.msg.trim().length > 0;
+    const topics = Object.keys(this.TOPICS).map(label => { const on = label === s.topic;
+      return { label, bg: on ? '#1F2A17' : '#fff', fg: on ? '#CDE5AE' : '#3E4A34', bd: on ? '#1F2A17' : '#DCE6CF', pick: () => this.setState({ topic: label }) }; });
+    return {
+      topics, hint: this.TOPICS[s.topic] || '',
+      name: s.name, email: s.email, msg: s.msg, count: s.msg.length + ' / 2000',
+      onName: e => this.setState({ name: e.target.value }),
+      onEmail: e => this.setState({ email: e.target.value }),
+      onMsg: e => this.setState({ msg: e.target.value }),
+      emailErr: s.tried && !emailOk, msgErr: s.tried && !msgOk,
+      emailBd: s.tried && !emailOk ? '#B3261E' : '#DCE6CF', msgBd: s.tried && !msgOk ? '#B3261E' : '#DCE6CF',
+      sent: s.sent,
+      submit: (e) => {
+        e.preventDefault();
+        if (!emailOk || !msgOk) { this.setState({ tried: true, sent: false }); return; }
+        const subject = `[${s.topic}] WA Blur and Privacy`;
+        const body = `${s.msg.trim()}\n\n—\nName: ${s.name.trim() || '-'}\nReply to: ${s.email.trim()}\nExtension: v3.46.16`;
+        window.location.href = `mailto:hello@wasecret.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        this.setState({ tried: false, sent: true });
+      },
+      copyLabel: s.copied ? 'Copied ✓' : 'Copy',
+      copyEmail: () => { try { navigator.clipboard.writeText('hello@wasecret.com'); } catch (e) {}
+        this.setState({ copied: true }); clearTimeout(this.ct); this.ct = setTimeout(() => this.setState({ copied: false }), 1800); },
+    };
+  }
+}
+</script>
+</body>
+</html>

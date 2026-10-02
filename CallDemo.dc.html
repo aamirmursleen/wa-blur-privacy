@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&amp;family=Geist+Mono:wght@500;600&amp;display=swap" rel="stylesheet">
+<style>
+[data-cd] *{box-sizing:border-box}
+@keyframes cdBar{0%,100%{transform:scaleY(.25)}50%{transform:scaleY(1)}}
+@keyframes cdPulse{0%{box-shadow:0 0 0 0 rgba(179,64,42,.6)}100%{box-shadow:0 0 0 10px rgba(179,64,42,0)}}
+@keyframes cdRing{0%{transform:scale(1);opacity:.55}100%{transform:scale(1.9);opacity:0}}
+@keyframes cdIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+</style>
+</helmet>
+
+<div ref="{{ wrapRef }}" data-cd="1" style="position:relative; width:100%; aspect-ratio:1040/620; overflow:hidden; border-radius:22px; font-family:Poppins,Geist,system-ui,sans-serif; color:#1F2A17;">
+  <div ref="{{ stageRef }}" style="position:absolute; left:0; top:0; width:1040px; height:620px; transform-origin:0 0; border-radius:22px; overflow:hidden; background:#fff; box-shadow:0 40px 80px -30px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.12);">
+
+    <div style="height:40px; display:flex; align-items:center; gap:14px; padding:0 16px; background:#F3F7EC; border-bottom:1px solid #E6EDDC;">
+      <span style="display:flex; gap:7px;"><span style="width:11px; height:11px; border-radius:50%; background:#E8C8B8;"></span><span style="width:11px; height:11px; border-radius:50%; background:#E8DDB0;"></span><span style="width:11px; height:11px; border-radius:50%; background:#CDE5AE;"></span></span>
+      <span style="flex:1; max-width:420px; height:26px; border-radius:99px; background:#fff; border:1px solid #E6EDDC; display:flex; align-items:center; gap:8px; padding:0 12px; font:500 12px Poppins,sans-serif; color:#56644A;">🔒 web.whatsapp.com</span>
+      <span style="margin-left:auto; display:flex; align-items:center; gap:8px; font:500 12px Poppins,sans-serif; color:#3B6E12;"><img src="assets/app-icon.png" alt="" style="width:20px; height:20px; border-radius:6px;">WA Blur and Privacy</span>
+    </div>
+
+    <div style="position:absolute; left:0; top:40px; width:640px; height:580px; overflow:hidden; background:#11180C; color:#fff; display:flex; flex-direction:column; align-items:center; isolation:isolate;">
+      <span style="position:absolute; z-index:-2; inset:-40px; background:url(assets/caller-ayesha.jpg) center 30%/cover no-repeat; filter:blur(38px) saturate(.9); opacity:.55;"></span>
+      <span style="position:absolute; z-index:-1; inset:0; background:radial-gradient(120% 90% at 50% 30%, rgba(43,58,32,.55) 0%, rgba(25,34,19,.85) 55%, #11180C 100%);"></span>
+      <div style="position:absolute; left:20px; top:16px; display:flex; gap:8px;">
+        <span style="display:flex; align-items:center; gap:8px; height:36px; padding:0 14px; border-radius:99px; background:{{ recBg }}; color:#fff; font:600 13px Poppins,sans-serif; transition:background .3s; animation:{{ recAnim }};"><span style="width:9px; height:9px; border-radius:50%; background:{{ recDot }};"></span>{{ recLabel }}</span>
+        <span style="display:flex; align-items:center; gap:8px; height:36px; padding:0 14px; white-space:nowrap; border-radius:99px; background:{{ vBg }}; color:{{ vFg }}; font:600 13px Poppins,sans-serif; transition:background .3s, color .3s;">🎙 {{ vLabel }}</span>
+      </div>
+      <span style="position:absolute; right:20px; top:24px; font:500 11px 'Geist Mono'; color:rgba(255,255,255,.55); letter-spacing:.04em;">Voice call</span>
+
+      <div style="position:relative; margin-top:72px; width:132px; height:132px;">
+        <sc-if value="{{ ringing }}" hint-placeholder-val="{{ true }}">
+          <span style="position:absolute; inset:0; border-radius:50%; border:2px solid #CDE5AE; animation:cdRing 1.4s ease-out infinite;"></span>
+          <span style="position:absolute; inset:0; border-radius:50%; border:2px solid #CDE5AE; animation:cdRing 1.4s .7s ease-out infinite;"></span>
+        </sc-if>
+        <span style="position:absolute; inset:0; border-radius:50%; background:#3B6E12 url(assets/caller-ayesha.jpg) center 22%/cover no-repeat; display:grid; place-items:center; font:600 44px Poppins,sans-serif; color:transparent; box-shadow:0 0 0 6px rgba(205,229,174,{{ talkRing }}); transition:box-shadow .15s;"></span>
+      </div>
+      <span style="margin-top:22px; font:600 26px Poppins,sans-serif;">Ayesha Khan</span>
+      <span style="margin-top:6px; font:500 15px 'Geist Mono'; color:#CDE5AE;">{{ callStatus }}</span>
+
+      <div style="margin-top:20px; height:64px; display:flex; align-items:center; gap:4px; opacity:{{ waveOp }}; transition:opacity .4s;">
+        <sc-for list="{{ bars }}" as="b" hint-placeholder-count="28">
+          <span style="width:5px; height:{{ b.h }}px; border-radius:3px; background:{{ waveColor }}; transform-origin:center; animation:cdBar {{ b.d }}s {{ b.dl }}s ease-in-out infinite; transition:background .4s;"></span>
+        </sc-for>
+      </div>
+      <sc-if value="{{ hasSub }}" hint-placeholder-val="{{ false }}">
+        <span style="margin-top:10px; padding:6px 12px; border-radius:10px; background:rgba(0,0,0,.35); font:500 14px Poppins,sans-serif; color:#fff; animation:cdIn .3s both;">{{ sub }}</span>
+      </sc-if>
+
+      <div style="position:absolute; bottom:86px; display:flex; gap:18px;">
+        <span style="width:56px; height:56px; border-radius:50%; background:rgba(255,255,255,.12); display:grid; place-items:center; font-size:20px;">🎤</span>
+        <span style="width:56px; height:56px; border-radius:50%; background:rgba(255,255,255,.12); display:grid; place-items:center; font-size:20px;">📷</span>
+        <span style="width:56px; height:56px; border-radius:50%; background:rgba(255,255,255,.12); display:grid; place-items:center; font-size:20px;">🔈</span>
+        <span style="width:56px; height:56px; border-radius:50%; background:#B3402A; display:grid; place-items:center; font-size:22px; transform:rotate(135deg);">✆</span>
+      </div>
+
+      <sc-if value="{{ saved }}" hint-placeholder-val="{{ false }}">
+        <div style="position:absolute; left:20px; top:66px; display:flex; align-items:center; gap:12px; padding:12px 16px; border-radius:16px; background:#fff; color:#1F2A17; box-shadow:0 16px 40px rgba(0,0,0,.35); animation:cdIn .35s both;">
+          <span style="width:32px; height:32px; border-radius:10px; background:#4E8A1A; color:#fff; display:grid; place-items:center; font-weight:700;">✓</span>
+          <span style="display:flex; flex-direction:column; gap:2px;"><span style="font:600 13px Poppins,sans-serif;">Recording saved on this computer</span><span style="font:500 11.5px 'Geist Mono'; color:#6B7A5E;">call-ayesha-khan · 00:09 · Downloads</span></span>
+        </div>
+      </sc-if>
+    </div>
+
+    <div style="position:absolute; left:640px; top:40px; width:400px; height:580px; background:#F6F9F1; border-left:1px solid #E6EDDC; padding:20px 16px; display:flex; flex-direction:column; gap:14px;">
+      <div style="display:flex; flex-direction:column; gap:4px;">
+        <span style="font:600 19px Poppins,sans-serif;">Voice changer</span>
+        <span style="font:400 12px/1.45 Poppins,sans-serif; color:#56644A;">Record a voice note in another voice, or change your voice live on calls. Everything runs on your computer.</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:12px; padding:12px 14px; border-radius:16px; background:#fff; border:1px solid #E6EDDC;">
+        <span style="flex:1; display:flex; flex-direction:column; gap:2px;"><span style="font:600 13px Poppins,sans-serif;">Change voice on calls</span><span style="font:400 11px Poppins,sans-serif; color:#6B7A5E;">Live pitch and tone during voice calls</span></span>
+        <span style="position:relative; width:44px; height:26px; border-radius:13px; background:{{ swBg }}; transition:background .25s;"><span style="position:absolute; top:3px; left:3px; width:20px; height:20px; border-radius:50%; background:#fff; box-shadow:0 1px 2px rgba(0,0,0,.2); transform:{{ swX }}; transition:transform .25s;"></span></span>
+      </div>
+      <span style="font:600 10.5px Poppins,sans-serif; letter-spacing:.08em; text-transform:uppercase; color:#6B7A5E;">Voice</span>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+        <sc-for list="{{ voices }}" as="v" hint-placeholder-count="4">
+          <div style="display:flex; align-items:center; gap:10px; padding:11px 12px; height:66px; border-radius:16px; border:1.5px solid {{ v.bd }}; background:{{ v.bg }}; transition:border-color .25s, background .25s;">
+            <span style="width:36px; height:36px; border-radius:50%; background:{{ v.dot }}; display:grid; place-items:center; font:600 13px Poppins,sans-serif; color:#3B6E12;">{{ v.i }}</span>
+            <span style="flex:1; display:flex; flex-direction:column; gap:1px;"><span style="font:600 13px Poppins,sans-serif;">{{ v.label }}</span><span style="font:400 11px Poppins,sans-serif; color:#6B7A5E;">{{ v.sub }}</span></span>
+            <span style="width:18px; height:18px; border-radius:50%; border:1.5px solid {{ v.ck }}; background:{{ v.ckBg }}; color:#fff; font-size:10px; display:grid; place-items:center;">{{ v.mark }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:8px; padding:12px 14px; border-radius:16px; background:#fff; border:1px solid #E6EDDC;">
+        <span style="display:flex; justify-content:space-between; font:600 12.5px Poppins,sans-serif;"><span>How much to change</span><span style="color:#3B6E12;">{{ pitchLabel }}</span></span>
+        <span style="position:relative; height:20px;">
+          <span style="position:absolute; left:0; right:0; top:8px; height:4px; border-radius:2px; background:#E6EDDC;"></span>
+          <span style="position:absolute; top:8px; height:4px; border-radius:2px; background:#4E8A1A; left:{{ fillL }}%; width:{{ fillW }}%;"></span>
+          <span style="position:absolute; top:1px; width:18px; height:18px; margin-left:-9px; border-radius:50%; background:#fff; border:2px solid #4E8A1A; left:{{ thumbL }}%; box-shadow:0 2px 6px rgba(40,70,20,.25);"></span>
+        </span>
+        <span style="display:flex; justify-content:space-between; font:500 10px 'Geist Mono'; color:#8A9780;"><span>-12</span><span>-8</span><span>-4</span><span>0</span><span>+4</span><span>+8</span><span>+12</span></span>
+      </div>
+      <div style="display:flex; gap:10px;">
+        <div style="flex:1; padding:10px 12px; border-radius:14px; background:#EEF5E4; display:flex; flex-direction:column; gap:2px;"><span style="font:500 10.5px Poppins,sans-serif; color:#6B7A5E;">Your voice</span><span style="font:600 18px 'Geist Mono'; color:#1F2A17;">{{ inHz }}</span></div>
+        <div style="flex:1; padding:10px 12px; border-radius:14px; background:{{ outBg }}; color:{{ outFg }}; display:flex; flex-direction:column; gap:2px; transition:background .3s;"><span style="font:500 10.5px Poppins,sans-serif; opacity:.8;">They hear</span><span style="font:600 18px 'Geist Mono';">{{ outHz }}</span></div>
+      </div>
+    </div>
+
+    <div style="position:absolute; left:{{ cx }}px; top:{{ cy }}px; width:26px; height:26px; transition:left .7s cubic-bezier(.45,.05,.3,1), top .7s cubic-bezier(.45,.05,.3,1); pointer-events:none; z-index:5;">
+      <span style="position:absolute; left:-12px; top:-12px; width:26px; height:26px; border-radius:50%; background:rgba(205,229,174,.55); transform:scale({{ clickS }}); opacity:{{ clickO }}; transition:transform .25s, opacity .25s;"></span>
+      <svg width="22" height="26" viewBox="0 0 22 26" style="position:absolute; left:0; top:0; filter:drop-shadow(0 2px 3px rgba(0,0,0,.35));"><path d="M2 2 L2 20 L7 15.5 L10.5 23 L13.5 21.6 L10 14.3 L17 14 Z" fill="#fff" stroke="#1F2A17" stroke-width="1.6" stroke-linejoin="round"></path></svg>
+    </div>
+
+    <div style="position:absolute; left:50%; bottom:18px; transform:translateX(-50%); z-index:6; display:flex; align-items:center; gap:10px; padding:9px 16px 9px 9px; border-radius:99px; background:rgba(31,42,23,.88); color:#fff; backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); box-shadow:0 10px 30px rgba(0,0,0,.35); white-space:nowrap;">
+      <span style="width:26px; height:26px; border-radius:50%; background:#CDE5AE; color:#2C5409; display:grid; place-items:center; font:700 12px 'Geist Mono';">{{ stepN }}</span>
+      <span style="font:500 14px Poppins,sans-serif;">{{ stepText }}</span>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1040,&quot;height&quot;:620}}">
+class Component extends DCLogic {
+  wrapRef = React.createRef();
+  stageRef = React.createRef();
+  T = 17;
+  state = { t: 0 };
+  BARS = Array.from({ length: 28 }, (_, i) => ({ h: 18 + Math.round(40 * Math.abs(Math.sin(i * 1.7))), d: (0.55 + (i % 5) * 0.09).toFixed(2), dl: (-(i * 0.07)).toFixed(2) }));
+  VOICES = [['Mari', 'Warm, female', 'M', '#E3EDD5'], ['Arslan', 'Deep, male', 'A', '#D9E3CB'], ['Jeb', 'Bright, young', 'J', '#EADFCB'], ['Om', 'Calm, low', 'O', '#D2DDD5']];
+  componentDidMount() {
+    const fit = () => { const w = this.wrapRef.current || document.querySelector('[data-cd]'), s = this.stageRef.current || (w && w.firstElementChild); if (w && s) s.style.transform = `scale(${w.clientWidth / 1040})`; };
+    fit(); requestAnimationFrame(fit); setTimeout(fit, 300); this.ro = new ResizeObserver(fit); const W = this.wrapRef.current || document.querySelector('[data-cd]'); W && this.ro.observe(W);
+    this.visible = true;
+    this.io = new IntersectionObserver(es => { this.visible = es[0].isIntersecting; }); W && this.io.observe(W);
+    let last = performance.now(), acc = 0;
+    this.iv = setInterval(() => { const now = performance.now(), dt = (now - last) / 1000; last = now; if (!this.visible) return;
+      acc = (acc + dt) % this.T; this.setState({ t: acc }); }, 60);
+  }
+  componentWillUnmount() { clearInterval(this.iv); this.ro && this.ro.disconnect(); this.io && this.io.disconnect(); }
+  renderVals() {
+    const t = this.state.t;
+    const connected = t >= 1.8, rec = t >= 3.4 && t < 13.4, voiceOn = t >= 5.4, picked = t >= 7.0, saved = t >= 13.4 && t < 16.6;
+    const pt = Math.max(0, Math.min(1, (t - 8.4) / 1.0)), pitch = picked ? -Math.round(4 * pt * 10) / 10 : 0;
+    const speaking = connected && t > 2.2 && t < 13.4;
+    const fmt = s => '00:' + String(Math.max(0, Math.floor(s))).padStart(2, '0');
+    const cur = [[520, 520, 0], [70, 80, 2.6], [70, 80, 3.4], [976, 180, 4.7], [976, 180, 5.4], [916, 286, 6.3], [916, 286, 7.0], [834, 456, 7.8], [779, 456, 9.4], [600, 330, 10.4], [70, 80, 12.6], [70, 80, 13.4], [520, 520, 14.4]];
+    let c = cur[0]; for (const k of cur) if (t >= k[2]) c = k;
+    const clicks = [3.4, 5.4, 7.0, 8.3, 13.4];
+    const clicking = clicks.some(x => t >= x && t < x + 0.28);
+    const steps = [[0, 'Start a voice or video call on WhatsApp Web'], [2.6, 'Press Record — the call is saved only on your computer'], [4.7, 'Turn on “Change voice on calls”'], [6.3, 'Pick a voice: Arslan · Deep, male'], [7.8, 'Set how much to change: −4 semitones'], [9.6, 'They hear your new voice, live'], [12.6, 'Stop recording'], [13.4, 'Saved to your Downloads folder']];
+    let si = 0; steps.forEach((s, i) => { if (t >= s[0]) si = i; });
+    const subs = [[2.4, 4.8, 'Hi Ayesha, can you hear me?'], [9.8, 12.8, 'This is my new voice — pretty cool, right?']];
+    const sb = subs.find(s => t >= s[0] && t < s[1]);
+    const inHz = speaking ? 182 + Math.round(6 * Math.sin(t * 7)) : 0;
+    const ratio = Math.pow(2, pitch / 12), outHz = speaking && voiceOn && picked ? Math.round(inHz * ratio) : inHz;
+    const thumb = ((pitch + 12) / 24) * 100;
+    return {
+      wrapRef: this.wrapRef, stageRef: this.stageRef,
+      ringing: !connected, callStatus: connected ? fmt(t - 1.8) : 'Calling…',
+      recBg: rec ? '#B3402A' : 'rgba(255,255,255,.14)', recDot: rec ? '#fff' : '#E8826E', recAnim: rec ? 'cdPulse 1.4s ease-out infinite' : 'none',
+      recLabel: rec ? 'REC ' + fmt(t - 3.4) : (saved ? 'Saved' : 'Record'),
+      vBg: voiceOn && picked ? '#CDE5AE' : 'rgba(255,255,255,.14)', vFg: voiceOn && picked ? '#2C5409' : '#fff', vLabel: voiceOn ? (picked ? 'Arslan ' + (pitch ? pitch : '0') : 'Voice on') : 'Voice off',
+      talkRing: speaking ? (0.25 + 0.2 * Math.abs(Math.sin(t * 9))).toFixed(2) : '0',
+      bars: this.BARS, waveOp: speaking ? 1 : 0.15, waveColor: voiceOn && picked && t >= 9.4 ? '#CDE5AE' : '#8DB86A',
+      hasSub: !!sb, sub: sb ? sb[2] : '',
+      saved,
+      swBg: voiceOn ? '#4E8A1A' : '#D5DDCB', swX: voiceOn ? 'translateX(18px)' : 'none',
+      voices: this.VOICES.map(([label, sub, i, dot], k) => { const on = picked && k === 1;
+        return { label, sub, i, dot, bd: on ? '#4E8A1A' : '#E6EDDC', bg: on ? '#F4F9EE' : '#fff', ck: on ? '#4E8A1A' : '#CBD5BE', ckBg: on ? '#4E8A1A' : '#fff', mark: on ? '✓' : '' }; }),
+      pitchLabel: (pitch > 0 ? '+' : pitch < 0 ? '−' : '') + Math.abs(pitch).toFixed(Math.abs(pitch) % 1 ? 1 : 0) + ' semitone',
+      thumbL: thumb.toFixed(1), fillL: Math.min(thumb, 50).toFixed(1), fillW: Math.abs(thumb - 50).toFixed(1),
+      inHz: inHz ? inHz + ' Hz' : '— Hz', outHz: outHz ? outHz + ' Hz' : '— Hz',
+      outBg: voiceOn && picked ? '#4E8A1A' : '#EEF5E4', outFg: voiceOn && picked ? '#fff' : '#1F2A17',
+      cx: c[0], cy: c[1], clickS: clicking ? 1.6 : 0.4, clickO: clicking ? 1 : 0,
+      stepN: String(si + 1), stepText: steps[si][1],
+    };
+  }
+}
+</script>
+</body>
+</html>

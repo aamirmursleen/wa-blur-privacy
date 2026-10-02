@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&amp;family=Geist:wght@300..700&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+@keyframes fkPress{0%,62%,100%{transform:translateY(0);box-shadow:0 .09em 0 #1F2A17}70%,84%{transform:translateY(.07em);box-shadow:0 .02em 0 #1F2A17}}
+@keyframes fGlow{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:.9;transform:scale(1.1)}}
+@keyframes fPulse{0%{box-shadow:0 0 0 0 rgba(205,229,174,.7)}100%{box-shadow:0 0 0 10px rgba(205,229,174,0)}}
+@keyframes fMarq{to{transform:translateX(-50%)}}
+@keyframes fRise{from{opacity:0;filter:blur(14px);transform:translateY(28px)}to{opacity:1;filter:blur(0);transform:none}}
+@keyframes fSpin{to{transform:rotate(360deg)}}
+</style>
+</helmet>
+
+<footer data-screen-label="Footer" style="position:relative; width:100%; border-radius:36px; overflow:hidden; background:linear-gradient(150deg,#5A9624 0%,#4E8A1A 38%,#3B6E12 70%,#2C5409 100%); color:#fff; isolation:isolate; font-family:Geist,system-ui,sans-serif;">
+  <div style="position:absolute; z-index:-1; width:900px; height:900px; right:-280px; top:-460px; border-radius:50%; background:radial-gradient(closest-side, rgba(205,229,174,.26), transparent); animation:fGlow 10s ease-in-out infinite;"></div>
+  <div style="position:absolute; z-index:-1; width:700px; height:700px; left:-300px; bottom:-380px; border-radius:50%; background:radial-gradient(closest-side, rgba(78,138,26,.55), transparent); animation:fGlow 12s 2s ease-in-out infinite;"></div>
+  <div style="position:absolute; z-index:-1; inset:0; background-image:linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px); background-size:56px 56px; -webkit-mask-image:radial-gradient(ellipse at 80% 0%, #000 10%, transparent 60%); mask-image:radial-gradient(ellipse at 80% 0%, #000 10%, transparent 60%);"></div>
+
+  <div style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:48px 40px; padding:clamp(28px,4.5vw,64px) clamp(24px,4.5vw,64px) clamp(28px,3.5vw,48px);">
+    <div style="flex:1 1 420px; min-width:0; display:flex; flex-direction:column; gap:26px; animation:fRise 1s cubic-bezier(.2,.7,.2,1) both; animation-timeline:view(); animation-range:entry 0% entry 45%;">
+      <span style="align-self:flex-start; display:inline-flex; align-items:center; gap:8px; padding:6px 12px; border-radius:999px; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.16); font:500 12px 'Geist Mono';"><span style="width:8px; height:8px; border-radius:50%; background:#CDE5AE; animation:fPulse 1.8s infinite;"></span>Your screen, your business</span>
+      <h2 style="margin:0; font-family:Archivo; font-stretch:110%; font-weight:850; font-size:clamp(36px,4.6vw,64px); line-height:1; letter-spacing:-.035em; text-transform:uppercase; text-wrap:balance;">
+        Someone looking?<br>
+        <span style="display:inline-flex; align-items:center; gap:.18em; flex-wrap:wrap; margin-top:.12em;">Press
+          <span style="display:inline-grid; place-items:center; min-width:1.5em; height:1.12em; padding:0 .24em; border-radius:.2em; background:#fff; color:#1F2A17; border:.04em solid #1F2A17; font-family:'Geist Mono'; font-weight:500; font-size:.62em; text-transform:none; letter-spacing:0; animation:fkPress 3.2s ease-in-out infinite;">Alt</span>
+          <span style="color:#CDE5AE;">+</span>
+          <span style="display:inline-grid; place-items:center; min-width:1.12em; height:1.12em; padding:0 .24em; border-radius:.2em; background:#CDE5AE; color:#1F2A17; border:.04em solid #1F2A17; font-family:'Geist Mono'; font-weight:500; font-size:.62em; letter-spacing:0; animation:fkPress 3.2s .12s ease-in-out infinite;">X</span>
+        </span>
+      </h2>
+      <p style="margin:0; max-width:440px; font-size:16px; line-height:1.55; color:rgba(255,255,255,.8); text-wrap:pretty;">Blur, lock and organise WhatsApp Web on your own computer. Chat history stays with you.</p>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <a href="WA%20Blur%20Landing.dc.html#install" style="display:inline-flex; align-items:center; gap:12px; padding:7px 7px 7px 20px; background:#CDE5AE; color:#1F2A17; border-radius:999px; font-weight:600; font-size:15px; text-decoration:none; transition:transform .25s, box-shadow .25s;" style-hover="color:#1F2A17; transform:translateY(-2px); box-shadow:0 18px 34px -14px rgba(205,229,174,.7);">Add to Chrome<span style="width:38px; height:38px; border-radius:50%; background:#1F2A17; color:#CDE5AE; display:grid; place-items:center; font-size:17px;">↗</span></a>
+        <a href="Contact.dc.html" style="display:inline-flex; align-items:center; height:52px; padding:0 20px; border:1px solid rgba(255,255,255,.28); color:#fff; border-radius:999px; font-weight:500; font-size:15px; text-decoration:none; transition:background .2s, border-color .2s;" style-hover="color:#fff; background:rgba(255,255,255,.1); border-color:rgba(255,255,255,.5);">Contact support</a>
+      </div>
+    </div>
+
+    <div style="flex:1.25 1 520px; min-width:0; display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:32px 24px;">
+      <sc-for list="{{ cols }}" as="col" hint-placeholder-count="3">
+        <div style="display:flex; flex-direction:column; gap:16px;">
+          <span style="font:500 11px 'Geist Mono'; letter-spacing:.1em; text-transform:uppercase; color:rgba(205,229,174,.85);">{{ col.title }}</span>
+          <div style="display:flex; flex-direction:column; gap:4px;">
+            <sc-for list="{{ col.links }}" as="l" hint-placeholder-count="4">
+              <a href="{{ l.href }}" style="display:flex; align-items:center; gap:8px; padding:6px 0; font-size:15px; color:{{ l.color }}; font-weight:{{ l.weight }}; text-decoration:none; transition:color .2s, transform .25s;" style-hover="color:#CDE5AE; transform:translateX(4px);">
+                <span style="width:6px; height:6px; border-radius:50%; flex:none; background:#CDE5AE; opacity:{{ l.dot }}; transition:opacity .2s;"></span>{{ l.label }}
+              </a>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="border-top:1px solid rgba(255,255,255,.1); border-bottom:1px solid rgba(255,255,255,.1); padding:16px 0; overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent); mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);">
+    <div style="display:flex; width:max-content; gap:40px; animation:fMarq 40s linear infinite; font:500 13px 'Geist Mono'; color:rgba(255,255,255,.72); white-space:nowrap;">
+      <span>✦ No analytics</span><span>✦ No ads</span><span>✦ No remote code</span><span>✦ PIN stored as a salted hash</span><span>✦ Works only on web.whatsapp.com</span><span>✦ Never sends a message for you</span><span>✦ Export TXT · HTML · CSV · JSON · Excel</span><span>✦ Translate into 100 languages</span>
+      <span>✦ No analytics</span><span>✦ No ads</span><span>✦ No remote code</span><span>✦ PIN stored as a salted hash</span><span>✦ Works only on web.whatsapp.com</span><span>✦ Never sends a message for you</span><span>✦ Export TXT · HTML · CSV · JSON · Excel</span><span>✦ Translate into 100 languages</span>
+    </div>
+  </div>
+
+  <div ref="{{ markRef }}" onMouseMove="{{ onMark }}" onMouseEnter="{{ onMarkIn }}" onMouseLeave="{{ onMarkOut }}" aria-hidden="true" style="position:relative; padding:clamp(20px,3vw,40px) clamp(12px,2vw,24px) 0; cursor:crosshair; user-select:none; -webkit-user-select:none;">
+    <div style="position:relative; font-family:Archivo; font-weight:900; font-stretch:125%; font-size:clamp(60px,16.4vw,224px); line-height:.8; letter-spacing:-.05em; text-align:center; white-space:nowrap;">
+      <span style="display:block; color:rgba(205,229,174,.2); filter:blur(14px);">WA BLUR</span>
+      <span style="position:absolute; inset:0; display:block; color:#CDE5AE; -webkit-mask-image:radial-gradient(circle 190px at var(--mx,50%) var(--my,50%), #000 30%, transparent 72%); mask-image:radial-gradient(circle 190px at var(--mx,50%) var(--my,50%), #000 30%, transparent 72%);">WA BLUR</span>
+      <span style="position:absolute; inset:0; display:block; color:transparent; -webkit-text-stroke:1px rgba(205,229,174,.18);">WA BLUR</span>
+    </div>
+    <div style="position:absolute; top:clamp(14px,2vw,26px); right:clamp(20px,3vw,44px); display:flex; align-items:center; gap:8px; font:500 11px 'Geist Mono'; color:rgba(255,255,255,.55);">
+      <span style="width:14px; height:14px; border-radius:50%; border:1.5px dashed rgba(205,229,174,.7); animation:fSpin 6s linear infinite;"></span>Move your cursor to reveal
+    </div>
+  </div>
+
+  <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:18px 28px; padding:22px clamp(24px,4.5vw,64px) 26px; background:rgba(31,42,23,.55); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-top:1px solid rgba(255,255,255,.08);">
+    <div style="display:flex; align-items:center; gap:12px;">
+      <img src="assets/logo-dark.png" alt="WASecret.com" style="height:34px; width:auto; display:block;">
+      <span style="display:flex; flex-direction:column; gap:2px;"><span style="font-size:14px; font-weight:600;">WA Blur and Privacy</span><span style="font-size:12px; color:rgba(255,255,255,.6);">© 2026 WASecret.com</span></span>
+    </div>
+    <p style="margin:0; flex:1 1 320px; max-width:560px; font-size:12px; line-height:1.55; color:rgba(255,255,255,.6);">Unofficial: this extension is not made by or affiliated with WhatsApp LLC or Meta. WhatsApp is a trademark of its owner.</p>
+    <div style="display:flex; align-items:center; gap:10px;">
+      <a href="mailto:hello@wasecret.com" style="font:500 12px 'Geist Mono'; color:rgba(255,255,255,.8); text-decoration:none; padding:7px 12px; border-radius:99px; border:1px solid rgba(255,255,255,.16);" style-hover="color:#CDE5AE; border-color:#CDE5AE;">hello@wasecret.com</a>
+      <span style="font:500 11px 'Geist Mono'; padding:7px 10px; border-radius:99px; background:rgba(205,229,174,.12); color:#CDE5AE;">v3.46.16</span>
+      <button onClick="{{ toTop }}" aria-label="Back to top" style="width:44px; height:44px; border-radius:50%; border:0; background:#CDE5AE; color:#1F2A17; font-size:18px; cursor:pointer; transition:transform .25s;" style-hover="transform:translateY(-3px) rotate(-8deg);">↑</button>
+    </div>
+  </div>
+</footer>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1320,&quot;height&quot;:820},&quot;current&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;pricing&quot;,&quot;about&quot;,&quot;contact&quot;,&quot;privacy&quot;,&quot;terms&quot;,&quot;cookies&quot;,&quot;disclaimer&quot;,&quot;dmca&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;drift&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  markRef = React.createRef();
+  hover = false;
+  componentDidMount() {
+    const el = this.markRef.current; if (!el) return;
+    const t0 = performance.now();
+    const tick = (t) => {
+      if (!this.hover && this.props.drift !== false) {
+        const s = (t - t0) / 1000;
+        el.style.setProperty('--mx', (50 + 38 * Math.sin(s * 0.55)) + '%');
+        el.style.setProperty('--my', (55 + 22 * Math.sin(s * 0.9)) + '%');
+      }
+      this.raf = requestAnimationFrame(tick);
+    };
+    this.io = new IntersectionObserver(es => {
+      if (es[0].isIntersecting) { if (!this.raf) this.raf = requestAnimationFrame(tick); }
+      else { cancelAnimationFrame(this.raf); this.raf = null; }
+    });
+    this.io.observe(el);
+  }
+  componentWillUnmount() { cancelAnimationFrame(this.raf); this.io && this.io.disconnect(); }
+  renderVals() {
+    const cur = this.props.current ?? 'home';
+    const L = 'WA%20Blur%20Landing.dc.html';
+    const mk = (label, href, key) => { const on = key && key === cur;
+      return { label, href, color: on ? '#CDE5AE' : 'rgba(255,255,255,.78)', weight: on ? 600 : 400, dot: on ? 1 : 0 }; };
+    const cols = [
+      { title: 'Product', links: [mk('Features', L + '#features'), mk('Pricing', 'Pricing.dc.html', 'pricing'), mk('Every screen', L + '#features'), mk('Tools', L + '#tools'), mk('How it works', L + '#how'), mk('FAQ', L + '#faq')] },
+      { title: 'Company', links: [mk('Home', L, 'home'), mk('About', 'About.dc.html', 'about'), mk('Contact us', 'Contact.dc.html', 'contact'), mk('Support email', 'mailto:hello@wasecret.com')] },
+      { title: 'Legal', links: [mk('Privacy Policy', 'Privacy%20Policy.dc.html', 'privacy'), mk('Terms of Service', 'Terms%20of%20Service.dc.html', 'terms'), mk('Cookie Policy', 'Cookie%20Policy.dc.html', 'cookies'), mk('Disclaimer', 'Disclaimer.dc.html', 'disclaimer'), mk('DMCA Policy', 'DMCA%20Policy.dc.html', 'dmca')] },
+    ];
+    return {
+      cols, markRef: this.markRef,
+      onMark: (e) => { const el = this.markRef.current; if (!el) return; const r = (el.firstElementChild || el).getBoundingClientRect();
+        el.style.setProperty('--mx', (e.clientX - r.left) + 'px'); el.style.setProperty('--my', (e.clientY - r.top) + 'px'); },
+      onMarkIn: () => { this.hover = true; }, onMarkOut: () => { this.hover = false; },
+      toTop: () => window.scrollTo({ top: 0, behavior: 'smooth' }),
+    };
+  }
+}
+</script>
+</body>
+</html>
