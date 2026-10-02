@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&amp;family=Geist+Mono:wght@500;600&amp;display=swap" rel="stylesheet">
+<style>
+[data-dd] *{box-sizing:border-box}
+@keyframes ddIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes ddPop{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:none}}
+@keyframes ddDot{0%,80%,100%{opacity:.3;transform:translateY(0)}40%{opacity:1;transform:translateY(-3px)}}
+@keyframes ddSlide{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
+@keyframes ddGlow{0%{box-shadow:0 0 0 0 rgba(78,138,26,.45)}100%{box-shadow:0 0 0 12px rgba(78,138,26,0)}}
+</style>
+</helmet>
+
+<div ref="{{ wrapRef }}" data-dd="1" style="position:relative; width:100%; aspect-ratio:1040/620; overflow:hidden; border-radius:22px; font-family:Poppins,system-ui,sans-serif; color:#1F2A17;">
+  <div ref="{{ stageRef }}" style="position:absolute; left:0; top:0; width:1040px; height:620px; transform-origin:0 0; overflow:hidden; background:#fff;">
+
+    <div style="height:40px; display:flex; align-items:center; gap:14px; padding:0 16px; background:#F3F7EC; border-bottom:1px solid #E6EDDC;">
+      <span style="display:flex; gap:7px;"><span style="width:11px; height:11px; border-radius:50%; background:#E8C8B8;"></span><span style="width:11px; height:11px; border-radius:50%; background:#E8DDB0;"></span><span style="width:11px; height:11px; border-radius:50%; background:#CDE5AE;"></span></span>
+      <span style="flex:1; max-width:420px; height:26px; border-radius:99px; background:#fff; border:1px solid #E6EDDC; display:flex; align-items:center; gap:8px; padding:0 12px; font:500 12px Poppins,sans-serif; color:#56644A;">🔒 web.whatsapp.com</span>
+      <span style="margin-left:auto; display:flex; align-items:center; gap:8px; font:500 12px Poppins,sans-serif; color:#3B6E12;"><img src="assets/app-icon.png" alt="" style="width:20px; height:20px; border-radius:6px;">WA Blur and Privacy</span>
+    </div>
+
+    <div style="position:absolute; left:0; top:40px; width:640px; height:580px; background:#F4F9EE; display:flex; flex-direction:column;">
+      <div style="height:62px; flex:none; display:flex; align-items:center; gap:12px; padding:0 18px; background:#fff; border-bottom:1px solid #E6EDDC;">
+        <span style="width:40px; height:40px; border-radius:50%; background:#3B6E12 url(assets/caller-ayesha.jpg) center 22%/cover;"></span>
+        <span style="display:flex; flex-direction:column; gap:1px;"><span style="font:600 15px Poppins,sans-serif;">Ayesha Khan</span><span style="font:400 12px Poppins,sans-serif; color:#4E8A1A;">{{ presence }}</span></span>
+        <span style="margin-left:auto; display:flex; gap:14px; color:#6B7A5E; font-size:16px;"><span>📞</span><span>🔍</span><span>⋮</span></span>
+      </div>
+
+      <div style="flex:1; min-height:0; padding:18px 22px; display:flex; flex-direction:column; gap:10px; background-image:radial-gradient(rgba(78,138,26,.07) 1px, transparent 1px); background-size:18px 18px;">
+        <span style="align-self:center; padding:4px 10px; border-radius:8px; background:#fff; font:500 11px Poppins,sans-serif; color:#6B7A5E; box-shadow:0 1px 1px rgba(40,60,20,.06);">Today</span>
+        <div style="align-self:flex-end; max-width:70%; padding:8px 12px 6px; border-radius:12px 12px 4px 12px; background:#DCEBC8; font:400 14px/1.45 Poppins,sans-serif; box-shadow:0 1px 1px rgba(40,60,20,.08);">Send me the photo from tonight? 😊<span style="display:block; text-align:right; font-size:10.5px; color:#56644A; margin-top:2px;">9:40 PM ✓✓</span></div>
+        <sc-if value="{{ typing }}" hint-placeholder-val="{{ false }}">
+          <div style="align-self:flex-start; display:flex; gap:4px; padding:12px 14px; border-radius:12px 12px 12px 4px; background:#fff; box-shadow:0 1px 1px rgba(40,60,20,.08); animation:ddIn .25s both;">
+            <span style="width:7px; height:7px; border-radius:50%; background:#8A9780; animation:ddDot 1s infinite;"></span><span style="width:7px; height:7px; border-radius:50%; background:#8A9780; animation:ddDot 1s .15s infinite;"></span><span style="width:7px; height:7px; border-radius:50%; background:#8A9780; animation:ddDot 1s .3s infinite;"></span>
+          </div>
+        </sc-if>
+        <sc-if value="{{ photoShown }}" hint-placeholder-val="{{ false }}">
+          <div style="align-self:flex-start; width:230px; padding:4px; border-radius:12px 12px 12px 4px; background:#fff; box-shadow:0 1px 1px rgba(40,60,20,.08); animation:ddIn .3s both;">
+            <div style="height:250px; border-radius:9px; background:#3B6E12 url(assets/caller-ayesha.jpg) center 30%/cover; filter:{{ photoFilter }}; opacity:{{ photoOp }}; transition:filter .6s, opacity .6s;"></div>
+            <span style="display:block; padding:6px 6px 2px; font:400 13.5px Poppins,sans-serif;">Here you go ✨<span style="float:right; font-size:10.5px; color:#8A9780;">9:42 PM</span></span>
+          </div>
+        </sc-if>
+        <sc-if value="{{ deleted }}" hint-placeholder-val="{{ false }}">
+          <div style="align-self:flex-start; display:flex; flex-wrap:nowrap; white-space:nowrap; align-items:center; gap:8px; padding:9px 12px; border-radius:12px 12px 12px 4px; background:#fff; font:italic 400 13.5px Poppins,sans-serif; color:#8A9780; box-shadow:0 1px 1px rgba(40,60,20,.08); animation:ddIn .3s both;">🚫 This message was deleted<span style="font-style:normal; font-size:10.5px;">9:42 PM</span></div>
+        </sc-if>
+      </div>
+
+      <div style="height:58px; flex:none; display:flex; align-items:center; gap:12px; padding:0 16px; background:#fff; border-top:1px solid #E6EDDC;">
+        <span style="color:#6B7A5E; font-size:18px;">＋</span>
+        <span style="flex:1; height:38px; border-radius:99px; background:#F3F7EC; display:flex; align-items:center; padding:0 16px; font:400 13px Poppins,sans-serif; color:#8A9780;">Type a message</span>
+        <span style="width:38px; height:38px; border-radius:50%; background:#4E8A1A; color:#fff; display:grid; place-items:center; font-size:15px;">🎤</span>
+      </div>
+
+      <sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
+        <div style="position:absolute; left:50%; top:78px; transform:translateX(-50%); display:flex; align-items:center; gap:10px; padding:10px 14px; border-radius:14px; background:#1F2A17; color:#fff; box-shadow:0 14px 30px rgba(31,42,23,.35); white-space:nowrap; animation:ddIn .3s both;">
+          <img src="assets/app-icon.png" alt="" style="width:24px; height:24px; border-radius:7px;">
+          <span style="font:500 13px Poppins,sans-serif;">Ayesha deleted a photo · <span style="color:#CDE5AE;">copy kept</span></span>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ viewer }}" hint-placeholder-val="{{ false }}">
+        <div style="position:absolute; inset:0; background:rgba(31,42,23,.72); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; animation:ddIn .3s both;">
+          <div style="position:relative; width:290px; height:370px; border-radius:16px; background:#3B6E12 url(assets/caller-ayesha.jpg) center 30%/cover; box-shadow:0 30px 60px rgba(0,0,0,.45); animation:ddPop .45s cubic-bezier(.2,.7,.2,1) both;">
+            <span style="position:absolute; left:12px; top:12px; display:flex; align-items:center; gap:6px; padding:6px 10px; border-radius:99px; background:#4E8A1A; color:#fff; font:600 11.5px Poppins,sans-serif;">↺ Recovered</span>
+          </div>
+          <span style="font:500 12.5px Poppins,sans-serif; color:#EAF1E0;">Ayesha Khan · deleted 9:42 PM · from phone</span>
+          <span style="display:flex; align-items:center; gap:8px; height:40px; padding:0 18px; border-radius:99px; background:{{ saveBg }}; color:{{ saveFg }}; font:600 13.5px Poppins,sans-serif; transition:background .25s;">{{ saveLabel }}</span>
+        </div>
+      </sc-if>
+    </div>
+
+    <div style="position:absolute; left:640px; top:40px; width:400px; height:580px; background:#F6F9F1; border-left:1px solid #E6EDDC; padding:20px 16px; display:flex; flex-direction:column; gap:12px;">
+      <div style="display:flex; flex-direction:column; gap:4px;">
+        <span style="font:600 19px Poppins,sans-serif;">Deleted messages</span>
+        <span style="font:400 12px/1.45 Poppins,sans-serif; color:#56644A;">Keeps a private copy when someone deletes a message for everyone. Stored only in this browser.</span>
+      </div>
+      <div style="border-radius:16px; background:#fff; border:1px solid #E6EDDC; overflow:hidden;">
+        <div style="display:flex; align-items:center; gap:12px; padding:11px 14px;">
+          <span style="flex:1; display:flex; flex-direction:column; gap:1px;"><span style="font:600 13px Poppins,sans-serif;">Keep deleted messages</span><span style="font:400 11px Poppins,sans-serif; color:#6B7A5E;">Text from new incoming messages</span></span>
+          <span style="position:relative; width:40px; height:24px; border-radius:12px; background:#4E8A1A;"><span style="position:absolute; top:3px; left:19px; width:18px; height:18px; border-radius:50%; background:#fff;"></span></span>
+        </div>
+        <div style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-top:1px solid #EEF2E8;">
+          <span style="flex:1; display:flex; flex-direction:column; gap:1px;"><span style="font:600 13px Poppins,sans-serif;">Auto-save media</span><span style="font:400 11px Poppins,sans-serif; color:#6B7A5E;">Downloads/Deleted-media</span></span>
+          <span style="position:relative; width:40px; height:24px; border-radius:12px; background:#4E8A1A;"><span style="position:absolute; top:3px; left:19px; width:18px; height:18px; border-radius:50%; background:#fff;"></span></span>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px; padding:10px 14px; border-top:1px solid #EEF2E8;">
+          <span style="flex:1; font:500 12.5px Poppins,sans-serif;">Keep for</span>
+          <span style="padding:4px 10px; border-radius:99px; border:1.5px solid #E6EDDC; font:500 11px Poppins,sans-serif; color:#56644A;">7 days</span>
+          <span style="padding:4px 10px; border-radius:99px; border:1.5px solid #4E8A1A; background:#EEF5E4; font:500 11px Poppins,sans-serif; color:#2C5409;">30 days</span>
+          <span style="padding:4px 10px; border-radius:99px; border:1.5px solid #E6EDDC; font:500 11px Poppins,sans-serif; color:#56644A;">90 days</span>
+        </div>
+      </div>
+      <span style="font:600 10.5px Poppins,sans-serif; letter-spacing:.08em; text-transform:uppercase; color:#6B7A5E;">Recovered</span>
+      <div style="border-radius:16px; background:#fff; border:1px solid #E6EDDC; overflow:hidden;">
+        <sc-if value="{{ rowShown }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; align-items:center; gap:12px; padding:12px 14px; background:{{ rowBg }}; border-bottom:1px solid #EEF2E8; transition:background .25s; animation:ddSlide .45s cubic-bezier(.2,.7,.2,1) both;">
+            <span style="position:relative; flex:none; width:40px; height:40px; border-radius:50%; background:#3B6E12 url(assets/caller-ayesha.jpg) center 22%/cover; animation:{{ rowGlow }};"></span>
+            <span style="flex:1; min-width:0; display:flex; flex-direction:column; gap:2px;"><span style="display:flex; align-items:center; gap:6px; font:600 13px Poppins,sans-serif;">Ayesha Khan<sc-if value="{{ isNew }}" hint-placeholder-val="{{ false }}"><span style="padding:1px 7px; border-radius:99px; background:#4E8A1A; color:#fff; font:600 10px Poppins,sans-serif;">New</span></sc-if></span><span style="font:400 11px Poppins,sans-serif; color:#6B7A5E;">📷 Photo · Today 9:42 PM · from phone</span></span>
+            <span style="flex:none; width:42px; height:42px; border-radius:10px; background:#3B6E12 url(assets/caller-ayesha.jpg) center 30%/cover;"></span>
+          </div>
+        </sc-if>
+        <div style="display:flex; align-items:center; gap:12px; padding:12px 14px;">
+          <span style="flex:none; width:40px; height:40px; border-radius:50%; background:#DCE9C9; color:#3B6E12; display:grid; place-items:center; font:600 13px Poppins,sans-serif;">FA</span>
+          <span style="flex:1; display:flex; flex-direction:column; gap:2px;"><span style="font:600 13px Poppins,sans-serif;">Family group</span><span style="font:400 11px Poppins,sans-serif; color:#6B7A5E;">“Dinner at 8, don't be late” · Yesterday</span></span>
+        </div>
+      </div>
+      <div style="margin-top:auto; padding:12px 14px; border-radius:16px; background:#EEF5E4; font:400 11px/1.5 Poppins,sans-serif; color:#56644A;">View-once and disappearing messages are never saved. Media WhatsApp already removed from its servers can't be recovered.</div>
+    </div>
+
+    <div style="position:absolute; left:{{ cx }}px; top:{{ cy }}px; width:26px; height:26px; transition:left .7s cubic-bezier(.45,.05,.3,1), top .7s cubic-bezier(.45,.05,.3,1); pointer-events:none; z-index:5;">
+      <span style="position:absolute; left:-12px; top:-12px; width:26px; height:26px; border-radius:50%; background:rgba(78,138,26,.45); transform:scale({{ clickS }}); opacity:{{ clickO }}; transition:transform .25s, opacity .25s;"></span>
+      <svg width="22" height="26" viewBox="0 0 22 26" style="position:absolute; left:0; top:0; filter:drop-shadow(0 2px 3px rgba(0,0,0,.35));"><path d="M2 2 L2 20 L7 15.5 L10.5 23 L13.5 21.6 L10 14.3 L17 14 Z" fill="#fff" stroke="#1F2A17" stroke-width="1.6" stroke-linejoin="round"></path></svg>
+    </div>
+
+    <div style="position:absolute; left:320px; bottom:76px; transform:translateX(-50%); z-index:6; display:flex; align-items:center; gap:10px; padding:9px 16px 9px 9px; border-radius:99px; background:rgba(31,42,23,.9); color:#fff; box-shadow:0 10px 30px rgba(0,0,0,.3); white-space:nowrap;">
+      <span style="width:26px; height:26px; border-radius:50%; background:#CDE5AE; color:#2C5409; display:grid; place-items:center; font:700 12px 'Geist Mono';">{{ stepN }}</span>
+      <span style="font:500 14px Poppins,sans-serif;">{{ stepText }}</span>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1040,&quot;height&quot;:620}}">
+class Component extends DCLogic {
+  wrapRef = React.createRef();
+  stageRef = React.createRef();
+  T = 15;
+  state = { t: 0 };
+  componentDidMount() {
+    const W = this.wrapRef.current || document.querySelector('[data-dd]');
+    const fit = () => { const w = this.wrapRef.current || W, s = this.stageRef.current || (w && w.firstElementChild); if (w && s) s.style.transform = `scale(${w.clientWidth / 1040})`; };
+    fit(); requestAnimationFrame(fit); setTimeout(fit, 300);
+    this.ro = new ResizeObserver(fit); W && this.ro.observe(W);
+    this.visible = true; this.io = new IntersectionObserver(es => { this.visible = es[0].isIntersecting; }); W && this.io.observe(W);
+    let last = performance.now(), acc = 0;
+    this.iv = setInterval(() => { const now = performance.now(), dt = (now - last) / 1000; last = now; if (!this.visible) return; acc = (acc + dt) % this.T; this.setState({ t: acc }); }, 60);
+  }
+  componentWillUnmount() { clearInterval(this.iv); this.ro && this.ro.disconnect(); this.io && this.io.disconnect(); }
+  renderVals() {
+    const t = this.state.t;
+    const typing = t >= 0.8 && t < 2.0, photoShown = t >= 2.0 && t < 4.6, fading = t >= 4.0 && t < 4.6, deleted = t >= 4.6;
+    const toast = t >= 4.8 && t < 7.0, rowShown = t >= 5.4, viewer = t >= 7.4 && t < 12.8, saved = t >= 10.4;
+    const cur = [[520, 520, 0], [520, 520, 6.0], [800, 384, 6.6], [800, 384, 7.4], [600, 420, 8.6], [320, 542, 9.8], [320, 542, 10.4], [520, 520, 12.4]];
+    let c = cur[0]; for (const k of cur) if (t >= k[2]) c = k;
+    const clicking = [7.4, 10.4].some(x => t >= x && t < x + 0.28);
+    const steps = [[0, 'Ayesha sends you a photo'], [4.0, 'She deletes it for everyone'], [4.8, 'WA Blur already kept a private copy'], [6.0, 'Open Deleted messages and tap it'], [7.4, 'See exactly what was deleted'], [9.8, 'Save it to your computer'], [10.4, 'Saved to Downloads/Deleted-media']];
+    let si = 0; steps.forEach((s, i) => { if (t >= s[0]) si = i; });
+    return {
+      wrapRef: this.wrapRef, stageRef: this.stageRef,
+      presence: typing ? 'typing…' : 'online',
+      typing, photoShown, deleted, toast, rowShown, viewer,
+      photoFilter: fading ? 'blur(10px) grayscale(.6)' : 'none', photoOp: fading ? 0.35 : 1,
+      isNew: rowShown && t < 7.4, rowBg: t >= 6.6 && t < 7.6 ? '#F4F9EE' : '#fff', rowGlow: rowShown && t < 7.4 ? 'ddGlow 1.4s ease-out infinite' : 'none',
+      saveBg: saved ? '#CDE5AE' : '#4E8A1A', saveFg: saved ? '#2C5409' : '#fff', saveLabel: saved ? '✓ Saved to Downloads/Deleted-media' : '⬇ Save picture',
+      cx: c[0], cy: c[1], clickS: clicking ? 1.6 : 0.4, clickO: clicking ? 1 : 0,
+      stepN: String(si + 1), stepText: steps[si][1],
+    };
+  }
+}
+</script>
+</body>
+</html>
